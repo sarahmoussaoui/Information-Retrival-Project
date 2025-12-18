@@ -9,29 +9,99 @@ import numpy as np
 from models import (
     vsm_rank,
     train_lsi, lsi_rank,
-    rank as bir_rank,
-    rank as ext_bir_rank,
-    score as bm25_score,
-    score as mle_score,
-    score as laplace_score,
-    score as jm_score,
-    score as dirichlet_score
+    bir_rank,
+    ext_bir_rank,
+    bm25_score,
+    mle_score,
+    laplace_score,
+    jm_score,
+    dirichlet_score
 )
 
 # =========================
 # INPUTS (to be defined)
 # =========================
+
 # queries_terms : dict { "I1": ["term1", "term2"], ... }
+with open("SourceCode/data/processed/parse_preprocess/queries_processed.json") as f:
+    queries_terms = json.load(f)
+
 # doc_term_matrix : dict { doc_id: {term: tfidf, ...}, ... }
-# binary_matrix : dict { term: {doc_id: 0/1}, ... }
+import json
+import math
+
+# Load stats
+with open("SourceCode/data/processed/build_tf_idf_stats/tf_idf_stats.json") as f:
+    stats = json.load(f)
+
+doc_tf = stats["doc_tf"]
+doc_tf_max = stats["doc_tf_max"]
+doc_freq = stats["doc_freq"]
+N = stats["n_docs"]
+
+doc_term_matrix = {}
+
+for doc_id, term_counts in doc_tf.items():
+    max_tf = doc_tf_max[doc_id]
+    doc_term_matrix[doc_id] = {}
+
+    for term, tf in term_counts.items():
+        tf_norm = tf / max_tf
+        idf = math.log(N / doc_freq[term])
+        doc_term_matrix[doc_id][term] = tf_norm * idf
+
+
 # tf : dict { term: {doc_id: tf}, ... }
+with open("SourceCode/data/processed/build_index/inverted_index.json") as f:
+    inverted = json.load(f)
+
+tf = {
+    term: {doc: freq for doc, freq in postings}
+    for term, postings in inverted.items()
+}
+
+# binary_matrix : dict { term: {doc_id: 0/1}, ... }
+binary_matrix = {
+    term: {doc: 1 for doc, _ in postings}
+    for term, postings in inverted.items()
+}
+
 # doc_term_counts : dict { doc_id: {term: tf, ...}, ... }
+with open("SourceCode/data/processed/build_tf_idf_stats/tf_idf_stats.json") as f:
+    stats = json.load(f)
+
+doc_term_counts = stats["doc_tf"]
+
 # doc_lengths : dict { doc_id: int }
+with open("SourceCode/data/processed/build_index/doc_lengths.json") as f:
+    doc_lengths = json.load(f)
+
 # avg_doc_length : float
+with open("SourceCode/data/processed/build_index/avg_doc_length.json") as f:
+    avg_doc_length = json.load(f)["avg_doc_length"]
+
 # vocab : list of all terms
+with open("SourceCode/data/processed/build_index/vocab.json") as f:
+    vocab_dict = json.load(f)
+
+vocab = list(vocab_dict.keys())
+
 # collection_model : dict { "cf": {term: cf}, "collection_length": int }
+collection_model = {
+    "cf": stats["collection_tf"],
+    "collection_length": sum(stats["collection_tf"].values())
+}
+
 # qrels : dict { query_id: [relevant_doc_ids] }
+with open("SourceCode/data/processed/parse_preprocess/qrels.json") as f:
+    qrels = json.load(f)
+
 # N : total number of documents
+N = stats["n_docs"]
+
+
+
+
 
 output_dir = "results"
 os.makedirs(output_dir, exist_ok=True)

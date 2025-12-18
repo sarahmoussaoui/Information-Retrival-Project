@@ -1,0 +1,13 @@
+paths:
+  data_raw: data/raw
+  data_processed: data/processed
+  outputs: outputs
+  plots: outputs/plots
+  runs: outputs/runs
+constants:
+  bm25:
+    k1: 1.2
+    b: 0.75
+  lm:
+    lambda: 0.2
+    mu: 2000

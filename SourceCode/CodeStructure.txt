@@ -70,8 +70,13 @@
 |   │       └─ logging.py
 |   │
 |   └─ scripts/
-|   ├─ download_medline.sh (optional)
-|   ├─ build_index.py
-|   ├─ run_eval.py
-|   ├─ make_plots.py
-|   └─ run_ui.sh
+|   │   ├─ run_pipeline.bat            # Windows pipeline: download → parse → TF-IDF → index
+|   │   ├─ run_eval.py                 # Run all models on queries and compute metrics
+|   │   ├─ make_plots.py               # Generate PR curves and performance plots
+|   │   ├─ run_ui.sh                   # Launch Streamlit UI for exploration
+|   │   │
+|   │   └─ downloadingToProcessing/    # Data processing pipeline scripts
+|   │       ├─ download_medline.bat    # Download MED collection (Windows)
+|   │       ├─ parse_preprocess.py     # Parse MED.ALL/QRY/REL, tokenize, stem
+|   │       ├─ build_tf_idf_stats.py   # Compute TF, DF, collection stats
+|   │       └─ build_index.py          # Build doc-term matrix, inverted index

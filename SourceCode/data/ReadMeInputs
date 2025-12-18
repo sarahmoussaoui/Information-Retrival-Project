@@ -1,0 +1,42 @@
+Data folder layout and usage
+============================
+
+Raw data (data/raw)
+-------------------
+- MED.ALL   : 1,033 documents (indexed)
+- MED.QRY   : 30 queries (not indexed, but preprocessed the same way as docs)
+- MED.REL   : relevance judgments (ground truth)
+- MED.REL.OLD : legacy/ignored
+
+Processed outputs (data/processed)
+----------------------------------
+- parse_preprocess/
+	- docs_processed.json      : {doc_id: [tokens]}
+	- queries_processed.json   : {query_id: [tokens]}
+	- qrels.json               : {query_id: [doc_id, ...]} (lists for JSON compatibility)
+
+- build_tf_idf_stats/
+	- tf_idf_stats.json        : {
+				"n_docs": int,
+				"doc_tf": {doc_id: {term: tf}},
+				"doc_tf_max": {doc_id: tf_max},
+				"doc_freq": {term: df},
+				"collection_tf": {term: total_tf_across_all_docs}
+		}
+
+- build_index/
+	- doc_term_matrix.npz      : CSR matrix (rows = docs, cols = vocab, values = term frequency)
+	- doc_index.json           : {doc_id: row_index}
+	- doc_lengths.json         : {doc_id: token_count}
+	- vocab.json               : {term: col_index}
+	- inverted_index.json      : {term: [(doc_id, tf), ...]} (postings sorted by doc_id)
+	- doc_term_matrix_binary.npz : CSR matrix with 0/1 term presence (rows = docs, cols = vocab)
+	- avg_doc_length.json      : {"avg_doc_length": mean_token_count}
+
+How to regenerate
+-----------------
+- Run the Windows pipeline: scripts\run_pipeline.bat
+- Or stepwise:
+	1) python scripts\downloadingToProcessing\test_parser.py
+	2) python scripts\downloadingToProcessing\build_tf_idf_stats.py
+	3) python scripts\downloadingToProcessing\build_index.py

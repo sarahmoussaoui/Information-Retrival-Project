@@ -54,6 +54,16 @@ if errorlevel 1 (
     exit /b 1
 )
 
+REM Step 5: Run all retrieval models and evaluation
+echo.
+echo [*] Step 5: Running all IR models and evaluation...
+python "%SCRIPT_DIR%run_all_models.py"
+if errorlevel 1 (
+    echo [ERROR] Failed to run IR models
+    exit /b 1
+)
+
+
 echo.
 echo ==========================================
 echo [OK] Pipeline completed successfully!

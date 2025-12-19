@@ -41,7 +41,7 @@ def bir_rank(
                 continue
 
             if binary_matrix[term].get(doc, 0) == 1:
-                n = sum(binary_matrix[term].values())
+                n = sum(binary_matrix[term].values()) # its ni
 
                 if not use_relevance:
                     rsv += math.log((N - n + 0.5) / (n + 0.5))

@@ -1,18 +1,17 @@
-"""Compute TF/TF-max/doc-freq/n-docs from processed tokens.
+"""Compute TF/TF-max/doc-freq/n-docs and normalized variants from processed tokens.
 
 Inputs (required):
 - data/processed/parse_preprocess/docs_processed.json : {doc_id: [tokens]}
 - data/processed/parse_preprocess/queries_processed.json : {query_id: [tokens]} (not used for doc stats but can be extended)
 
-Outputs:
-- data/processed/tf_idf_stats.json with:
-    {
-      "n_docs": int,
-      "doc_tf": {doc_id: {term: tf}},
-      "doc_tf_max": {doc_id: tf_max},
-    "doc_freq": {term: df}
-    "collection_tf": {term: total_tf_across_all_docs}
-    }
+Outputs (each saved as a separate JSON file under data/processed/build_tf_idf_stats/):
+    - n_docs.json                 : {"n_docs": int}
+    - doc_tf.json                 : {doc_id: {term: tf}}
+    - doc_tf_max.json             : {doc_id: tf_max}
+    - doc_tf_norm.json            : {doc_id: {term: tf_norm}}           # tf_norm = tf / tf_max for that doc (0 if tf_max=0)
+    - doc_freq.json               : {term: df}
+    - collection_tf.json          : {term: total_tf_across_all_docs}
+    - collection_tf_norm.json     : {term: tf_norm_collection}          # tf_norm_collection = tf_total / max(tf_total) over terms
 """
 
 import json
@@ -38,6 +37,7 @@ def compute_stats(doc_tokens: dict[int, list[str]]):
 
     doc_tf = {}
     doc_tf_max = {}
+    doc_tf_norm = {}
     doc_freq = Counter()
     collection_tf = Counter()
 
@@ -48,16 +48,30 @@ def compute_stats(doc_tokens: dict[int, list[str]]):
         collection_tf.update(counts)
         tf_max = max(counts.values()) if counts else 0
         doc_tf_max[doc_id] = tf_max
+        # Normalized TF per document
+        if tf_max > 0:
+            doc_tf_norm[doc_id] = {term: tf_norm(tf, tf_max) for term, tf in counts.items()}
+        else:
+            doc_tf_norm[doc_id] = {term: 0.0 for term in counts.keys()}
         # Update document frequency per term (presence in doc)
         for term in counts:
             doc_freq[term] += 1
+
+    # Normalized collection TF: divide by max total frequency across all terms
+    if collection_tf:
+        max_collection_tf = max(collection_tf.values())
+        collection_tf_norm = {term: tf_norm(total_tf, max_collection_tf) for term, total_tf in collection_tf.items()}
+    else:
+        collection_tf_norm = {}
 
     return {
         "n_docs": n_docs,
         "doc_tf": doc_tf,
         "doc_tf_max": doc_tf_max,
+        "doc_tf_norm": doc_tf_norm,
         "doc_freq": dict(doc_freq),
         "collection_tf": dict(collection_tf),
+        "collection_tf_norm": collection_tf_norm,
     }
 
 
@@ -77,10 +91,18 @@ def main():
 
     stats = compute_stats(doc_tokens)
 
-    # Save stats
-    out_path = out_dir / "tf_idf_stats.json"
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(stats, f, ensure_ascii=False)
+    # Save stats to separate files
+    def save_json(path: Path, obj):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(obj, f, ensure_ascii=False)
+
+    save_json(out_dir / "n_docs.json", {"n_docs": stats["n_docs"]})
+    save_json(out_dir / "doc_tf.json", stats["doc_tf"])
+    save_json(out_dir / "doc_tf_max.json", stats["doc_tf_max"])
+    save_json(out_dir / "doc_tf_norm.json", stats["doc_tf_norm"])
+    save_json(out_dir / "doc_freq.json", stats["doc_freq"])
+    save_json(out_dir / "collection_tf.json", stats["collection_tf"])
+    save_json(out_dir / "collection_tf_norm.json", stats["collection_tf_norm"])
 
     # Optional: print a small sample
     sample_doc = next(iter(doc_tokens)) if doc_tokens else None

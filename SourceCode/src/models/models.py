@@ -82,12 +82,12 @@ def bir_rank(query_terms, index, use_relevance=False, query_id=None):
             if binary_matrix[term].get(doc, 0) == 1:
                 n = sum(binary_matrix[term].values())
                 if not use_relevance:
-                    rsv += math.log((N-n+0.5)/(n+0.5))
+                    rsv += math.log10((N-n+0.5)/(n+0.5))
                 else:
                     r = sum(1 for d in relevant_docs if binary_matrix[term].get(d,0)==1)
                     numerator = (r+0.5)*(N-R-n+r+0.5)
                     denominator = (n-r+0.5)*(R-r+0.5)
-                    rsv += math.log(numerator/denominator)
+                    rsv += math.log10(numerator/denominator)
         scores[doc] = rsv
     ranking = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     return ranking
@@ -112,16 +112,16 @@ def ext_bir_rank(query_terms, index, use_relevance=False, query_id=None):
     for doc in documents:
         rsv = 0.0
         for term in query_terms:
-            w_ij = tfidf.get(term, {}).get(doc, 0.0)
+            w_ij = tfidf.get(doc, {}).get(term, 0.0)
             if w_ij == 0: continue
             n = sum(binary_matrix.get(term, {}).values())
             if not use_relevance:
-                rsv += w_ij * math.log((N-n+0.5)/(n+0.5))
+                rsv += w_ij * math.log10((N-n+0.5)/(n+0.5))
             else:
                 r = sum(1 for d in relevant_docs if binary_matrix.get(term, {}).get(d,0)==1)
                 numerator = (r+0.5)*(N-R-n+r+0.5)
                 denominator = (n-r+0.5)*(R-r+0.5)
-                rsv += w_ij * math.log(numerator/denominator)
+                rsv += w_ij * math.log10(numerator/denominator)
         scores[doc] = rsv
     ranking = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     return ranking
@@ -144,7 +144,7 @@ def bm25_score(query_terms, index, k1=1.2, b=0.75):
             tf_td = tf.get(term, {}).get(doc, 0)
             if tf_td==0: continue
             n = sum(binary_matrix.get(term, {}).values())
-            idf = math.log((N-n+0.5)/(n+0.5))
+            idf = math.log10((N-n+0.5)/(n+0.5))
             norm = 1 - b + b * (dl/avgdl)
             tf_component = tf_td*(k1+1)/(tf_td + k1*norm)
             score_val += idf*tf_component
@@ -166,7 +166,7 @@ def mle_score(query_terms, doc_term_counts):
             if tf==0 or dl==0:
                 zero_prob = True
                 break
-            log_score += math.log(tf/dl)
+            log_score += math.log10(tf/dl)
         scores[doc_id] = float("-inf") if zero_prob else log_score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
     return ranking
@@ -181,7 +181,7 @@ def laplace_score(query_terms, doc_term_counts, vocab_size):
         log_score = 0.0
         for term in query_terms:
             tf = tf_doc.get(term,0)
-            log_score += math.log((tf+1)/(dl+vocab_size))
+            log_score += math.log10((tf+1)/(dl+vocab_size))
         scores[doc_id] = log_score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
     return ranking
@@ -200,7 +200,7 @@ def jm_score(query_terms, doc_term_counts, collection_model, lamb=0.2):
             p_doc = tf_doc.get(term,0)/dl if dl>0 else 0.0
             p_coll = cf.get(term,0)/collection_length
             prob = lamb*p_doc + (1-lamb)*p_coll
-            log_score += math.log(prob if prob>0 else 1e-10)
+            log_score += math.log10(prob if prob>0 else 1e-10)
         scores[doc_id] = log_score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
     return ranking
@@ -219,7 +219,7 @@ def dirichlet_score(query_terms, doc_term_counts, collection_model, mu=2000):
             tf = tf_doc.get(term,0)
             p_coll = cf.get(term,0)/collection_length
             prob = (tf + mu*p_coll)/(dl + mu)
-            log_score += math.log(prob if prob>0 else 1e-10)
+            log_score += math.log10(prob if prob>0 else 1e-10)
         scores[doc_id] = log_score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
     return ranking

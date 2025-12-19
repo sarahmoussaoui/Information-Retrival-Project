@@ -80,7 +80,7 @@ for doc_id, terms in doc_tf_norm.items():
     doc_term_matrix[doc_id] = {}
 
     for term, tf_norm in terms.items():
-        idf = math.log((N / doc_freq[term])+1) 
+        idf = math.log10((N / doc_freq[term])+1) 
         doc_term_matrix[doc_id][term] = tf_norm * idf
 
 collection_model = {

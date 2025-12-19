@@ -85,7 +85,7 @@ collection_model = {
     "collection_length": sum(collection_tf.values())
 }
 
-output_dir = "Results"
+output_dir = "SourceCode/Results"
 os.makedirs(output_dir, exist_ok=True)
 
 

@@ -44,7 +44,7 @@ def bir_rank(
                 n = sum(binary_matrix[term].values()) # its ni
 
                 if not use_relevance:
-                    rsv += math.log((N - n + 0.5) / (n + 0.5))
+                    rsv += math.log10((N - n + 0.5) / (n + 0.5))
                 else:
                     r = sum(
                         1 for d in relevant_docs
@@ -54,7 +54,7 @@ def bir_rank(
                     numerator = (r + 0.5) * (N - R - n + r + 0.5)
                     denominator = (n - r + 0.5) * (R - r + 0.5)
 
-                    rsv += math.log(numerator / denominator)
+                    rsv += math.log10(numerator / denominator)
 
         scores[doc] = rsv
 

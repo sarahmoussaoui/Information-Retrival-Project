@@ -34,7 +34,7 @@ def dirichlet_rank(
             prob = (tf + mu * p_coll) / (doc_length + mu)
 
             # Numerical safety
-            log_score += math.log(prob if prob > 0 else 1e-10)
+            log_score += math.log10(prob if prob > 0 else 1e-10)
 
         scores[doc_id] = log_score
 

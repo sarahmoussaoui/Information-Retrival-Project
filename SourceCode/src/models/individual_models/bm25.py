@@ -33,7 +33,7 @@ def bm25_rank(
                 continue
 
             n = sum(binary_matrix.get(term, {}).values())
-            idf = math.log((N - n + 0.5) / (n + 0.5))
+            idf = math.log10((N - n + 0.5) / (n + 0.5))
 
             norm = 1 - b + b * (dl / avgdl)
             tf_component = (tf_td * (k1 + 1)) / (tf_td + k1 * norm)

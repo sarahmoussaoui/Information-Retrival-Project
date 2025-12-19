@@ -32,7 +32,7 @@ def mle_rank(
                 break
 
             prob = tf / doc_length
-            log_score += math.log(prob)
+            log_score += math.log10(prob)
 
         # Assign very small score if any term unseen
         scores[doc_id] = float("-inf") if zero_prob else log_score

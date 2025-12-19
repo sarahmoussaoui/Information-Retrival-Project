@@ -28,7 +28,7 @@ def laplace_rank(
             prob = (tf + 1) / (doc_length + vocab_size)
 
             # Always > 0, but keep safe log
-            log_score += math.log(prob)
+            log_score += math.log10(prob)
 
         scores[doc_id] = log_score
 

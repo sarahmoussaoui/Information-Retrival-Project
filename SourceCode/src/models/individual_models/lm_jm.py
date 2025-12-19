@@ -37,7 +37,7 @@ def jm_rank(
             prob = lamb * p_doc + (1 - lamb) * p_coll
 
             # Numerical stability
-            log_score += math.log(prob if prob > 0 else 1e-10)
+            log_score += math.log10(prob if prob > 0 else 1e-10)
 
         scores[doc_id] = log_score
 

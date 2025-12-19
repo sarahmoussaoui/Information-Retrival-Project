@@ -40,14 +40,14 @@ def extended_bir_rank(
         rsv = 0.0
 
         for term in query_terms:
-            w_ij = tfidf.get(term, {}).get(doc, 0.0)
+            w_ij = tfidf.get(doc, {}).get(term, 0.0)
             if w_ij == 0:
                 continue
 
             n = sum(binary_matrix.get(term, {}).values())
 
             if not use_relevance:
-                idf_prob = math.log((N - n + 0.5) / (n + 0.5))
+                idf_prob = math.log10((N - n + 0.5) / (n + 0.5))
                 rsv += w_ij * idf_prob
             else:
                 r = sum(
@@ -58,7 +58,7 @@ def extended_bir_rank(
                 numerator = (r + 0.5) * (N - R - n + r + 0.5)
                 denominator = (n - r + 0.5) * (R - r + 0.5)
 
-                prob_weight = math.log(numerator / denominator)
+                prob_weight = math.log10(numerator / denominator)
                 rsv += w_ij * prob_weight
 
         scores[doc] = rsv

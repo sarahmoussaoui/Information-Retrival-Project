@@ -29,22 +29,18 @@ with open("SourceCode/data/processed/parse_preprocess/queries_processed.json") a
 with open("SourceCode/data/processed/parse_preprocess/qrels.json") as f:
     qrels = json.load(f)
 
-
-with open("SourceCode/data/processed/build_tf_idf_stats/doc_tf_norm.json") as f:
-    doc_tf_norm = json.load(f)
-
 with open("SourceCode/data/processed/build_tf_idf_stats/doc_freq.json") as f:
     doc_freq = json.load(f)
 
-with open("SourceCode/data/processed/build_tf_idf_stats/collection_tf.json") as f:
-    collection_tf = json.load(f)
+with open("SourceCode/data/processed/build_index/doc_index.json") as f:
+    doc_index = json.load(f)
 
 with open("SourceCode/data/processed/build_tf_idf_stats/n_docs.json") as f:
     N = json.load(f)["n_docs"]
 
 # vocab : list of terms
 with open("SourceCode/data/processed/build_index/vocab.json") as f:
-    vocab_dict = json.load(f)
+    vocab_dict = json.load(f) 
 
 vocab = list(vocab_dict.keys())
 
@@ -53,6 +49,13 @@ with open("SourceCode/data/processed/build_index/doc_lengths.json") as f:
 
 with open("SourceCode/data/processed/build_index/avg_doc_length.json") as f:
     avg_doc_length = json.load(f)["avg_doc_length"]
+
+##
+with open("SourceCode/data/processed/build_tf_idf_stats/doc_tf_norm.json") as f:
+    doc_tf_norm = json.load(f)
+
+with open("SourceCode/data/processed/build_tf_idf_stats/collection_tf.json") as f: # should i use normalized or not ?
+    collection_tf = json.load(f)
 
 # tf : dict { term: {doc_id: tf} }
 tf = {}
@@ -68,7 +71,7 @@ binary_matrix = {
 }
 
 # doc_term_counts : dict { doc_id: {term: tf} }
-doc_term_counts = doc_tf_norm
+doc_term_counts = doc_tf_norm            
 
 # doc_term_matrix : dict { doc_id: {term: tfidf} }
 doc_term_matrix = {}
@@ -77,13 +80,14 @@ for doc_id, terms in doc_tf_norm.items():
     doc_term_matrix[doc_id] = {}
 
     for term, tf_norm in terms.items():
-        idf = math.log(N / doc_freq[term])
+        idf = math.log((N / doc_freq[term])+1) 
         doc_term_matrix[doc_id][term] = tf_norm * idf
 
 collection_model = {
     "cf": collection_tf,
     "collection_length": sum(collection_tf.values())
 }
+
 
 output_dir = "SourceCode/Results"
 os.makedirs(output_dir, exist_ok=True)
@@ -206,4 +210,4 @@ for qid, terms in queries_terms.items():
 save_results("LM_Dirichlet", dirichlet_results)
 
 
-print("[ALL DONE] All models executed and JSON results saved in 'results/' folder.")
+print("[ALL DONE] All models executed and JSON results saved in 'Results/' folder.")

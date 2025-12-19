@@ -55,7 +55,7 @@ def run_vsm(
     queries_terms,
     doc_term_matrix,
     vocab,
-    output_dir="results"
+    output_dir="SourceCode/src/models/individual_models/individual_results"
 ):
     os.makedirs(output_dir, exist_ok=True)
 

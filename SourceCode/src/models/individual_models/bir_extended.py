@@ -73,7 +73,7 @@ def extended_bir_rank(
 def run_extended_bir(
     queries_terms,
     index,
-    output_dir="results",
+    output_dir="SourceCode/src/models/individual_models/individual_results",
     use_relevance=False
 ):
     os.makedirs(output_dir, exist_ok=True)

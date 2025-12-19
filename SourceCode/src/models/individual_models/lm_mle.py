@@ -47,7 +47,7 @@ def mle_rank(
 def run_mle_lm(
     queries_terms,
     doc_term_counts,
-    output_dir="results"
+    output_dir="SourceCode/src/models/individual_models/individual_results"
 ):
     os.makedirs(output_dir, exist_ok=True)
 

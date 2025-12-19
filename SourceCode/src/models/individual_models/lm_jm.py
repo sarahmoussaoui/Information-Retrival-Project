@@ -53,7 +53,7 @@ def run_jelinek_mercer_lm(
     doc_term_counts,
     collection_model,
     lamb: float = 0.2,
-    output_dir="results"
+    output_dir="SourceCode/src/models/individual_models/individual_results"
 ):
     os.makedirs(output_dir, exist_ok=True)
 

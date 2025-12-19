@@ -52,7 +52,7 @@ def run_lsi(
     tfidf_matrix,
     queries_tfidf,
     doc_ids,
-    output_dir="results",
+    output_dir="SourceCode/src/models/individual_models/individual_results",
     k=100
 ):
     os.makedirs(output_dir, exist_ok=True)

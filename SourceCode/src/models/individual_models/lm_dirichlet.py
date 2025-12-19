@@ -50,7 +50,7 @@ def run_dirichlet_lm(
     doc_term_counts,
     collection_model,
     mu: float = 2000,
-    output_dir="results"
+    output_dir="SourceCode/src/models/individual_models/individual_results"
 ):
     os.makedirs(output_dir, exist_ok=True)
 

@@ -43,7 +43,7 @@ def run_laplace_lm(
     queries_terms,
     doc_term_counts,
     vocab_size: int,
-    output_dir="results"
+    output_dir="SourceCode/src/models/individual_models/individual_results"
 ):
     os.makedirs(output_dir, exist_ok=True)
 

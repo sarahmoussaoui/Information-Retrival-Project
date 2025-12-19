@@ -52,7 +52,7 @@ def bm25_rank(
 def run_bm25(
     queries_terms,
     index,
-    output_dir="results",
+    output_dir="SourceCode/src/models/individual_models/individual_results",
     k1=1.2,
     b=0.75
 ):

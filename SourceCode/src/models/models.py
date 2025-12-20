@@ -1,7 +1,7 @@
-"""All IR Models for Lab 5 – ready to import
-  rank → emphasizes that the function produces a ranking directly.
-  score → emphasizes that the function computes a score for each document (ranking is done after scoring).
-"""
+# """All IR Models for Lab 5 – ready to import
+#   rank → emphasizes that the function produces a ranking directly.
+#   score → emphasizes that the function computes a score for each document (ranking is done after scoring).
+# """
 
 import numpy as np
 import math
@@ -28,7 +28,7 @@ def vsm_rank(query, doc_term_matrix, vocab):
     q_norm = np.linalg.norm(q_vec)
     for doc, d_vec in doc_vectors.items():
         d_norm = np.linalg.norm(d_vec)
-        scores[doc] = np.dot(q_vec, d_vec)/(q_norm*d_norm + 1e-10) if q_norm*d_norm != 0 else 0.0
+        scores[doc] = np.dot(q_vec, d_vec)/(q_norm*d_norm) if q_norm*d_norm != 0 else 0.0
 
     ranked_docs = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     return ranked_docs
@@ -130,12 +130,14 @@ def ext_bir_rank(query_terms, index, use_relevance=False, query_id=None):
 # 5️⃣ BM25
 # =========================
 def bm25_score(query_terms, index, k1=1.2, b=0.75):
-    N = index["N"]
+    N = index["N"] 
     documents = index["documents"]
     tf = index["tf"]
     doc_lengths = index["doc_lengths"]
     avgdl = index["avg_doc_length"]
-    binary_matrix = index["binary_matrix"]
+    binary_matrix = index["binary_matrix"] 
+    # print(avgdl, N,doc_lengths)
+    # print(binary_matrix)
     scores = {}
     for doc in documents:
         score_val = 0.0
@@ -144,8 +146,9 @@ def bm25_score(query_terms, index, k1=1.2, b=0.75):
             tf_td = tf.get(term, {}).get(doc, 0)
             if tf_td==0: continue
             n = sum(binary_matrix.get(term, {}).values())
+            # print(term, tf_td, n)
             idf = math.log10((N-n+0.5)/(n+0.5))
-            norm = 1 - b + b * (dl/avgdl)
+            norm = (1 - b) + b * (dl/avgdl)
             tf_component = tf_td*(k1+1)/(tf_td + k1*norm)
             score_val += idf*tf_component
         scores[doc] = score_val
@@ -159,15 +162,15 @@ def mle_score(query_terms, doc_term_counts):
     scores = {}
     for doc_id, tf_doc in doc_term_counts.items():
         dl = sum(tf_doc.values())
-        log_score = 0.0
-        zero_prob = False
+        score = 1.0
+        # zero_prob = False
         for term in query_terms:
             tf = tf_doc.get(term,0)
-            if tf==0 or dl==0:
-                zero_prob = True
-                break
-            log_score += math.log10(tf/dl)
-        scores[doc_id] = float("-inf") if zero_prob else log_score
+            # if tf==0 or dl==0:
+            #     zero_prob = True
+            #     break
+            score *= (tf/dl)
+        scores[doc_id] = score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
     return ranking
 
@@ -178,11 +181,11 @@ def laplace_score(query_terms, doc_term_counts, vocab_size):
     scores = {}
     for doc_id, tf_doc in doc_term_counts.items():
         dl = sum(tf_doc.values())
-        log_score = 0.0
+        score = 1.0
         for term in query_terms:
             tf = tf_doc.get(term,0)
-            log_score += math.log10((tf+1)/(dl+vocab_size))
-        scores[doc_id] = log_score
+            score *= (tf+1)/(dl+vocab_size)
+        scores[doc_id] = score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
     return ranking
 
@@ -195,31 +198,34 @@ def jm_score(query_terms, doc_term_counts, collection_model, lamb=0.2):
     collection_length = collection_model["collection_length"]
     for doc_id, tf_doc in doc_term_counts.items():
         dl = sum(tf_doc.values())
-        log_score = 0.0
+        score = 1.0
         for term in query_terms:
             p_doc = tf_doc.get(term,0)/dl if dl>0 else 0.0
             p_coll = cf.get(term,0)/collection_length
             prob = lamb*p_doc + (1-lamb)*p_coll
-            log_score += math.log10(prob if prob>0 else 1e-10)
-        scores[doc_id] = log_score
+            score *= prob 
+        scores[doc_id] = score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
     return ranking
 
 # =========================
 # 9️⃣ Language Model – Dirichlet
 # =========================
-def dirichlet_score(query_terms, doc_term_counts, collection_model, mu=2000):
+def dirichlet_score(query_terms, doc_term_counts, collection_model):
     scores = {}
-    cf = collection_model["cf"]
-    collection_length = collection_model["collection_length"]
+    cf = collection_model["cf"] # term -> collection frequency
+    collection_length = collection_model["collection_length"] # total number of terms in collection
+    avg_doc_length = collection_length / len(doc_term_counts) # average document length
+    mu = 0.3 * avg_doc_length
     for doc_id, tf_doc in doc_term_counts.items():
-        dl = sum(tf_doc.values())
-        log_score = 0.0
+        dl = sum(tf_doc.values()) # document length
+        score = 1.0
         for term in query_terms:
             tf = tf_doc.get(term,0)
             p_coll = cf.get(term,0)/collection_length
             prob = (tf + mu*p_coll)/(dl + mu)
-            log_score += math.log10(prob if prob>0 else 1e-10)
-        scores[doc_id] = log_score
+            score *= prob #if prob>0 else 1e-10
+        scores[doc_id] = score
     ranking = sorted(scores.items(), key=lambda x:x[1], reverse=True)
+    # print(len(doc_term_counts),collection_length,avg_doc_length)
     return ranking

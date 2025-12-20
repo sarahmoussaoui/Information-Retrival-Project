@@ -22,39 +22,39 @@ import json
 import math
 
 # queries_terms : dict { query_id: [term, ...] }
-with open("SourceCode/data/processed/parse_preprocess/queries_processed.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\data\processed\parse_preprocess\queries_processed.json") as f:
     queries_terms = json.load(f)
 
 # qrels : dict { query_id: [doc_id, ...] }
-with open("SourceCode/data/processed/parse_preprocess/qrels.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/parse_preprocess/qrels.json") as f:
     qrels = json.load(f)
 
-with open("SourceCode/data/processed/build_tf_idf_stats/doc_freq.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_tf_idf_stats/doc_freq.json") as f:
     doc_freq = json.load(f)
 
-with open("SourceCode/data/processed/build_index/doc_index.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_index/doc_index.json") as f:
     doc_index = json.load(f)
 
-with open("SourceCode/data/processed/build_tf_idf_stats/n_docs.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_tf_idf_stats/n_docs.json") as f:
     N = json.load(f)["n_docs"]
 
 # vocab : list of terms
-with open("SourceCode/data/processed/build_index/vocab.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_index/vocab.json") as f:
     vocab_dict = json.load(f) 
 
 vocab = list(vocab_dict.keys())
 
-with open("SourceCode/data/processed/build_index/doc_lengths.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_index/doc_lengths.json") as f:
     doc_lengths = json.load(f)
 
-with open("SourceCode/data/processed/build_index/avg_doc_length.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_index/avg_doc_length.json") as f:
     avg_doc_length = json.load(f)["avg_doc_length"]
 
 ##
-with open("SourceCode/data/processed/build_tf_idf_stats/doc_tf_norm.json") as f:
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_tf_idf_stats/doc_tf_norm.json") as f:
     doc_tf_norm = json.load(f)
 
-with open("SourceCode/data/processed/build_tf_idf_stats/collection_tf.json") as f: # should i use normalized or not ?
+with open(r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode/data/processed/build_tf_idf_stats/collection_tf.json") as f: # should i use normalized or not ?
     collection_tf = json.load(f)
 
 # tf : dict { term: {doc_id: tf} }
@@ -89,7 +89,7 @@ collection_model = {
 }
 
 
-output_dir = "SourceCode/Results"
+output_dir = "./SourceCode/Results"
 os.makedirs(output_dir, exist_ok=True)
 
 
@@ -205,7 +205,7 @@ save_results("LM_JelinekMercer", jm_results)
 # =========================
 dirichlet_results = {"model": "LM_Dirichlet", "queries": {}}
 for qid, terms in queries_terms.items():
-    ranking = dirichlet_score(terms, doc_term_counts, collection_model, mu=2000)
+    ranking = dirichlet_score(terms, doc_term_counts, collection_model)
     dirichlet_results["queries"][qid] = [{"doc_id": d, "score": float(s)} for d, s in ranking]
 save_results("LM_Dirichlet", dirichlet_results)
 

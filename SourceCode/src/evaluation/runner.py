@@ -1,7 +1,4 @@
 """
-runner.py
-==========
-
 Run all IR metrics on query results.
 
 This script computes:

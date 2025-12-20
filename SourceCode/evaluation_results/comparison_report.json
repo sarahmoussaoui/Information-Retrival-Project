@@ -1,0 +1,1209 @@
+{
+  "model_comparison": {
+    "BIR_no_relevance": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 50.41375725110534
+    },
+    "BIR_with_relevance": {
+      "mean_ndcg@20": 0.8666666666666667,
+      "mean_dcg@20": 2.236604406600966
+    },
+    "BM25": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 32.01454924298682
+    },
+    "ExtendedBIR_no_relevance": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 38.88418337351813
+    },
+    "ExtendedBIR_with_relevance": {
+      "mean_ndcg@20": 0.9,
+      "mean_dcg@20": 2.8192102281434686
+    },
+    "LM_Dirichlet": {
+      "mean_ndcg@20": 0.6666666666666666,
+      "mean_dcg@20": 4.209045471081377e-05
+    },
+    "LM_Laplace": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 1.0320774258317068e-08
+    },
+    "LM_JelinekMercer": {
+      "mean_ndcg@20": 0.6666666666666666,
+      "mean_dcg@20": 1.415409720105856e-05
+    },
+    "LM_MLE": {
+      "mean_ndcg@20": 0.06666666666666667,
+      "mean_dcg@20": 0.0003186755506626727
+    },
+    "LSI_k100": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 4.678941894228337
+    },
+    "VSM_Cosine": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 1.6287139744426742
+    }
+  },
+  "ranking_by_ndcg": [
+    {
+      "rank": 1,
+      "model": "BIR_no_relevance",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 2,
+      "model": "BM25",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 3,
+      "model": "ExtendedBIR_no_relevance",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 4,
+      "model": "LM_Laplace",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 5,
+      "model": "LSI_k100",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 6,
+      "model": "VSM_Cosine",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 7,
+      "model": "ExtendedBIR_with_relevance",
+      "mean_ndcg@20": 0.9
+    },
+    {
+      "rank": 8,
+      "model": "BIR_with_relevance",
+      "mean_ndcg@20": 0.8666666666666667
+    },
+    {
+      "rank": 9,
+      "model": "LM_Dirichlet",
+      "mean_ndcg@20": 0.6666666666666666
+    },
+    {
+      "rank": 10,
+      "model": "LM_JelinekMercer",
+      "mean_ndcg@20": 0.6666666666666666
+    },
+    {
+      "rank": 11,
+      "model": "LM_MLE",
+      "mean_ndcg@20": 0.06666666666666667
+    }
+  ],
+  "ranking_by_dcg": [
+    {
+      "rank": 1,
+      "model": "BIR_no_relevance",
+      "mean_dcg@20": 50.41375725110534
+    },
+    {
+      "rank": 2,
+      "model": "ExtendedBIR_no_relevance",
+      "mean_dcg@20": 38.88418337351813
+    },
+    {
+      "rank": 3,
+      "model": "BM25",
+      "mean_dcg@20": 32.01454924298682
+    },
+    {
+      "rank": 4,
+      "model": "LSI_k100",
+      "mean_dcg@20": 4.678941894228337
+    },
+    {
+      "rank": 5,
+      "model": "ExtendedBIR_with_relevance",
+      "mean_dcg@20": 2.8192102281434686
+    },
+    {
+      "rank": 6,
+      "model": "BIR_with_relevance",
+      "mean_dcg@20": 2.236604406600966
+    },
+    {
+      "rank": 7,
+      "model": "VSM_Cosine",
+      "mean_dcg@20": 1.6287139744426742
+    },
+    {
+      "rank": 8,
+      "model": "LM_MLE",
+      "mean_dcg@20": 0.0003186755506626727
+    },
+    {
+      "rank": 9,
+      "model": "LM_Dirichlet",
+      "mean_dcg@20": 4.209045471081377e-05
+    },
+    {
+      "rank": 10,
+      "model": "LM_JelinekMercer",
+      "mean_dcg@20": 1.415409720105856e-05
+    },
+    {
+      "rank": 11,
+      "model": "LM_Laplace",
+      "mean_dcg@20": 1.0320774258317068e-08
+    }
+  ],
+  "gains_comparison": {
+    "BIR_no_relevance_vs_BIR_with_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "BIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.9,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -10.0
+    },
+    "BIR_no_relevance_vs_BM25": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "BM25",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_LM_Dirichlet": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BIR_no_relevance_vs_LM_Laplace": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_LM_JelinekMercer": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BIR_no_relevance_vs_LM_MLE": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "BIR_no_relevance_vs_LSI_k100": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_VSM_Cosine": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_with_relevance_vs_BM25": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "BM25",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_with_relevance_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_with_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_with_relevance_vs_LM_Dirichlet": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -10.0
+    },
+    "BIR_with_relevance_vs_LM_Laplace": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_with_relevance_vs_LM_JelinekMercer": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -10.0
+    },
+    "BIR_with_relevance_vs_LM_MLE": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -80.0
+    },
+    "BIR_with_relevance_vs_LSI_k100": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_with_relevance_vs_VSM_Cosine": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BM25",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BM25",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_LM_Dirichlet": {
+      "model_a": "BM25",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BM25_vs_LM_Laplace": {
+      "model_a": "BM25",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_LM_JelinekMercer": {
+      "model_a": "BM25",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BM25_vs_LM_MLE": {
+      "model_a": "BM25",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "BM25_vs_LSI_k100": {
+      "model_a": "BM25",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_VSM_Cosine": {
+      "model_a": "BM25",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_Dirichlet": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_Laplace": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_JelinekMercer": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_MLE": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "ExtendedBIR_no_relevance_vs_LSI_k100": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_VSM_Cosine": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_Dirichlet": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_Laplace": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_JelinekMercer": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_MLE": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "ExtendedBIR_with_relevance_vs_LSI_k100": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_with_relevance_vs_VSM_Cosine": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Dirichlet_vs_LM_Laplace": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": Infinity,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Dirichlet_vs_LM_JelinekMercer": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Dirichlet_vs_LM_MLE": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -70.0
+    },
+    "LM_Dirichlet_vs_LSI_k100": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": Infinity,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Dirichlet_vs_VSM_Cosine": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": Infinity,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Laplace_vs_LM_JelinekMercer": {
+      "model_a": "LM_Laplace",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "LM_Laplace_vs_LM_MLE": {
+      "model_a": "LM_Laplace",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "LM_Laplace_vs_LSI_k100": {
+      "model_a": "LM_Laplace",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Laplace_vs_VSM_Cosine": {
+      "model_a": "LM_Laplace",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_JelinekMercer_vs_LM_MLE": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -70.0
+    },
+    "LM_JelinekMercer_vs_LSI_k100": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": Infinity,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_JelinekMercer_vs_VSM_Cosine": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": Infinity,
+        "I8": Infinity,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_MLE_vs_LSI_k100": {
+      "model_a": "LM_MLE",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.1,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": Infinity,
+        "I2": Infinity,
+        "I3": Infinity,
+        "I4": Infinity,
+        "I5": Infinity,
+        "I6": Infinity,
+        "I7": Infinity,
+        "I8": Infinity,
+        "I9": Infinity,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_MLE_vs_VSM_Cosine": {
+      "model_a": "LM_MLE",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.1,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": Infinity,
+        "I2": Infinity,
+        "I3": Infinity,
+        "I4": Infinity,
+        "I5": Infinity,
+        "I6": Infinity,
+        "I7": Infinity,
+        "I8": Infinity,
+        "I9": Infinity,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LSI_k100_vs_VSM_Cosine": {
+      "model_a": "LSI_k100",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    }
+  }
+}

@@ -273,17 +273,17 @@ def create_comparison_report(all_metrics, output_dir="metrics"):
 if __name__ == "__main__":
     # 1. Liste de tous tes fichiers JSON de résultats
     MODEL_JSON_PATHS = [
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BM25.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Dirichlet.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Laplace.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_JelinekMercer.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_MLE.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LSI_k100.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\VSM_Cosine.json",        
+        r"SourceCode\Results\BIR_no_relevance.json",
+        r"SourceCode\Results\BIR_with_relevance.json",
+        r"SourceCode\Results\BM25.json",
+        r"SourceCode\Results\ExtendedBIR_no_relevance.json",
+        r"SourceCode\Results\ExtendedBIR_with_relevance.json",
+        r"SourceCode\Results\LM_Dirichlet.json",
+        r"SourceCode\Results\LM_Laplace.json",
+        r"SourceCode\Results\LM_JelinekMercer.json",
+        r"SourceCode\Results\LM_MLE.json",
+        r"SourceCode\Results\LSI_k100.json",
+        r"SourceCode\Results\VSM_Cosine.json",        
     ]
     
     # 2. Évaluer tous les modèles

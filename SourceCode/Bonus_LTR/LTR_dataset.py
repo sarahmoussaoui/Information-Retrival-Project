@@ -307,21 +307,21 @@ def create_ltr_dataset_with_relevance(model_json_paths, qrels_path, output_path=
 if __name__ == "__main__":
     # Tes chemins
     MODEL_JSON_PATHS = [
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BM25.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Dirichlet.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Laplace.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_JelinekMercer.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_MLE.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LSI_k100.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\VSM_Cosine.json",
+        r"SourceCode\Results\BIR_no_relevance.json",
+        r"SourceCode\Results\BIR_with_relevance.json",
+        r"SourceCode\Results\BM25.json",
+        r"SourceCode\Results\ExtendedBIR_no_relevance.json",
+        r"SourceCode\Results\ExtendedBIR_with_relevance.json",
+        r"SourceCode\Results\LM_Dirichlet.json",
+        r"SourceCode\Results\LM_Laplace.json",
+        r"SourceCode\Results\LM_JelinekMercer.json",
+        r"SourceCode\Results\LM_MLE.json",
+        r"SourceCode\Results\LSI_k100.json",
+        r"SourceCode\Results\VSM_Cosine.json",
     ]
     
     # Chemin vers qrels.json
-    QRELS_PATH = r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\data\processed\parse_preprocess\qrels.json"
+    QRELS_PATH = r"SourceCode\data\processed\parse_preprocess\qrels.json"
     
     OUTPUT_PATH = "ltr_supervised_dataset.json"
     

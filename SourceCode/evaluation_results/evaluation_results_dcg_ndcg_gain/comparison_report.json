@@ -363,11 +363,11 @@
         "I5": 0.0,
         "I6": 0.0,
         "I7": 0.0,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 10.0
     },
     "BIR_with_relevance_vs_ExtendedBIR_no_relevance": {
       "model_a": "BIR_with_relevance",
@@ -382,11 +382,11 @@
         "I5": 0.0,
         "I6": 0.0,
         "I7": 0.0,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 10.0
     },
     "BIR_with_relevance_vs_ExtendedBIR_with_relevance": {
       "model_a": "BIR_with_relevance",
@@ -401,11 +401,11 @@
         "I5": 0.0,
         "I6": 0.0,
         "I7": 0.0,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 10.0
     },
     "BIR_with_relevance_vs_LM_Dirichlet": {
       "model_a": "BIR_with_relevance",
@@ -439,11 +439,11 @@
         "I5": 0.0,
         "I6": 0.0,
         "I7": 0.0,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 10.0
     },
     "BIR_with_relevance_vs_LM_JelinekMercer": {
       "model_a": "BIR_with_relevance",
@@ -496,11 +496,11 @@
         "I5": 0.0,
         "I6": 0.0,
         "I7": 0.0,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 10.0
     },
     "BIR_with_relevance_vs_VSM_Cosine": {
       "model_a": "BIR_with_relevance",
@@ -515,11 +515,11 @@
         "I5": 0.0,
         "I6": 0.0,
         "I7": 0.0,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 10.0
     },
     "BM25_vs_ExtendedBIR_no_relevance": {
       "model_a": "BM25",
@@ -932,12 +932,12 @@
         "I4": 0.0,
         "I5": 0.0,
         "I6": 0.0,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 20.0
     },
     "LM_Dirichlet_vs_LM_JelinekMercer": {
       "model_a": "LM_Dirichlet",
@@ -989,12 +989,12 @@
         "I4": 0.0,
         "I5": 0.0,
         "I6": 0.0,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 20.0
     },
     "LM_Dirichlet_vs_VSM_Cosine": {
       "model_a": "LM_Dirichlet",
@@ -1008,12 +1008,12 @@
         "I4": 0.0,
         "I5": 0.0,
         "I6": 0.0,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 20.0
     },
     "LM_Laplace_vs_LM_JelinekMercer": {
       "model_a": "LM_Laplace",
@@ -1122,12 +1122,12 @@
         "I4": 0.0,
         "I5": 0.0,
         "I6": 0.0,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 20.0
     },
     "LM_JelinekMercer_vs_VSM_Cosine": {
       "model_a": "LM_JelinekMercer",
@@ -1141,12 +1141,12 @@
         "I4": 0.0,
         "I5": 0.0,
         "I6": 0.0,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 0.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 20.0
     },
     "LM_MLE_vs_LSI_k100": {
       "model_a": "LM_MLE",
@@ -1154,18 +1154,18 @@
       "mean_ndcg_a": 0.1,
       "mean_ndcg_b": 1.0,
       "gains_per_query": {
-        "I1": Infinity,
-        "I2": Infinity,
-        "I3": Infinity,
-        "I4": Infinity,
-        "I5": Infinity,
-        "I6": Infinity,
-        "I7": Infinity,
-        "I8": Infinity,
-        "I9": Infinity,
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 90.0
     },
     "LM_MLE_vs_VSM_Cosine": {
       "model_a": "LM_MLE",
@@ -1173,18 +1173,18 @@
       "mean_ndcg_a": 0.1,
       "mean_ndcg_b": 1.0,
       "gains_per_query": {
-        "I1": Infinity,
-        "I2": Infinity,
-        "I3": Infinity,
-        "I4": Infinity,
-        "I5": Infinity,
-        "I6": Infinity,
-        "I7": Infinity,
-        "I8": Infinity,
-        "I9": Infinity,
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
         "I10": 0.0
       },
-      "mean_gain": 0.0
+      "mean_gain": 90.0
     },
     "LSI_k100_vs_VSM_Cosine": {
       "model_a": "LSI_k100",
@@ -1410,11 +1410,11 @@
         "I5": 1647.592084657121,
         "I6": 1520.003875433824,
         "I7": 786.5265465203271,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 1815.859280982686,
         "I10": 694.8133004689624
       },
-      "mean_gain": 1295.3014320132093
+      "mean_gain": 1305.3014320132093
     },
     "BIR_with_relevance_vs_ExtendedBIR_no_relevance": {
       "model_a": "BIR_with_relevance",
@@ -1429,11 +1429,11 @@
         "I5": 1910.5353782927925,
         "I6": 2262.2338708649922,
         "I7": 1115.1882442349452,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 2083.9890720964827,
         "I10": 961.3484152091979
       },
-      "mean_gain": 1597.1525501353512
+      "mean_gain": 1607.1525501353512
     },
     "BIR_with_relevance_vs_ExtendedBIR_with_relevance": {
       "model_a": "BIR_with_relevance",
@@ -1448,11 +1448,11 @@
         "I5": -19.86215065400852,
         "I6": 52.471938286596355,
         "I7": 126.25340700108805,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 15.037659272084555,
         "I10": -19.70362369305324
       },
-      "mean_gain": 9.19270497878502
+      "mean_gain": 19.192704978785024
     },
     "BIR_with_relevance_vs_LM_Dirichlet": {
       "model_a": "BIR_with_relevance",
@@ -1486,11 +1486,11 @@
         "I5": -100.0,
         "I6": -100.0,
         "I7": -100.0,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": -100.0,
         "I10": -99.99999036477291
       },
-      "mean_gain": -89.99999903647725
+      "mean_gain": -79.99999903647725
     },
     "BIR_with_relevance_vs_LM_JelinekMercer": {
       "model_a": "BIR_with_relevance",
@@ -1543,11 +1543,11 @@
         "I5": 161.37134747733904,
         "I6": 184.1493298858734,
         "I7": -27.87052715221919,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": 214.9052174296283,
         "I10": 228.79143105864193
       },
-      "mean_gain": 218.65092137098586
+      "mean_gain": 228.65092137098586
     },
     "BIR_with_relevance_vs_VSM_Cosine": {
       "model_a": "BIR_with_relevance",
@@ -1562,11 +1562,11 @@
         "I5": -23.81842539097109,
         "I6": 58.57857664820675,
         "I7": -73.34931719867201,
-        "I8": Infinity,
+        "I8": 100.0,
         "I9": -1.5921158400877025,
         "I10": -7.586914594163095
       },
-      "mean_gain": 10.899743006622892
+      "mean_gain": 20.89974300662289
     },
     "BM25_vs_ExtendedBIR_no_relevance": {
       "model_a": "BM25",
@@ -1979,12 +1979,12 @@
         "I4": -99.99995543896276,
         "I5": -99.99999999999977,
         "I6": -99.99999999994142,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": -99.9999998401577,
         "I10": -99.88241119769819
       },
-      "mean_gain": -79.98733615991651
+      "mean_gain": -59.9873361599165
     },
     "LM_Dirichlet_vs_LM_JelinekMercer": {
       "model_a": "LM_Dirichlet",
@@ -2036,8 +2036,8 @@
         "I4": 850634661418173.0,
         "I5": 1.2428488769205896e+30,
         "I6": 4.271578762167117e+16,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 1.6386238888301224e+32,
         "I10": 4012487.371246438
       },
@@ -2055,8 +2055,8 @@
         "I4": 283883043311848.4,
         "I5": 3.62251583269213e+29,
         "I6": 2.3838904720177748e+16,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 5.120699845809793e+31,
         "I10": 1127714.001245192
       },
@@ -2169,8 +2169,8 @@
         "I4": 3409193947273980.5,
         "I5": 9.670902015526727e+30,
         "I6": 4.19101903482993e+17,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 3.427895956331116e+32,
         "I10": 14769110.172866259
       },
@@ -2188,8 +2188,8 @@
         "I4": 1137753252823145.2,
         "I5": 2.818765524772502e+30,
         "I6": 2.3389315523489206e+17,
-        "I7": Infinity,
-        "I8": Infinity,
+        "I7": 100.0,
+        "I8": 100.0,
         "I9": 1.0712175267729491e+32,
         "I10": 4151067.4336744267
       },
@@ -2201,18 +2201,18 @@
       "mean_dcg_a": 4.383081306158244e-05,
       "mean_dcg_b": 4.968895666397628,
       "gains_per_query": {
-        "I1": Infinity,
-        "I2": Infinity,
-        "I3": Infinity,
-        "I4": Infinity,
-        "I5": Infinity,
-        "I6": Infinity,
-        "I7": Infinity,
-        "I8": Infinity,
-        "I9": Infinity,
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
         "I10": 993291.8252165759
       },
-      "mean_gain": 99329.18252165758
+      "mean_gain": 99419.18252165758
     },
     "LM_MLE_vs_VSM_Cosine": {
       "model_a": "LM_MLE",
@@ -2220,18 +2220,18 @@
       "mean_dcg_a": 4.383081306158244e-05,
       "mean_dcg_b": 1.6898256151817943,
       "gains_per_query": {
-        "I1": Infinity,
-        "I2": Infinity,
-        "I3": Infinity,
-        "I4": Infinity,
-        "I5": Infinity,
-        "I6": Infinity,
-        "I7": Infinity,
-        "I8": Infinity,
-        "I9": Infinity,
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
         "I10": 279111.66707299656
       },
-      "mean_gain": 27911.166707299657
+      "mean_gain": 28001.166707299657
     },
     "LSI_k100_vs_VSM_Cosine": {
       "model_a": "LSI_k100",

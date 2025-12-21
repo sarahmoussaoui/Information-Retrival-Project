@@ -11,12 +11,23 @@ import random
 def dcg_at_k(relevance_scores, k=20):
     """
     Calcule le DCG@k (Discounted Cumulative Gain).
+
     :param relevance_scores: Liste des scores de pertinence
     :param k: cutoff
+    :param shuffle: si True, mélange aléatoirement les scores
     :return: DCG@k
     """
     scores = relevance_scores.copy()
     scores = scores[:k]
+    # print("avant : ",scores)
+    # Si ideal est False, trier les scores par ordre croissant
+    # if ideal == False:
+    #     scores = sorted(scores)
+
+    # if shuffle:
+    #     random.shuffle(scores)
+    # print("apres : ",scores)
+
 
     if not scores:
         return 0.0
@@ -35,6 +46,7 @@ def dcg_at_k(relevance_scores, k=20):
 def ndcg_at_k(relevance_scores, k=20):
     """
     Calcule le nDCG@k (Normalized Discounted Cumulative Gain).
+    
     :param relevance_scores: Liste des scores de pertinence
     :param k: Nombre de résultats à considérer
     :return: Valeur du nDCG@k
@@ -185,7 +197,8 @@ def create_comparison_report(all_metrics, output_dir="metrics"):
         "model_comparison": {},
         "ranking_by_ndcg": [],
         "ranking_by_dcg": [],
-        "gains_comparison": {}
+        "gains_comparison_ndcg": {},
+        "gains_comparison_dcg": {}
     }
     
     model_names = list(all_metrics.keys())
@@ -246,11 +259,42 @@ def create_comparison_report(all_metrics, output_dir="metrics"):
             # Calculer les gains
             gains = calculate_gain_percentage(ndcg_a, ndcg_b)
             
-            comparison["gains_comparison"][key] = {
+            comparison["gains_comparison_ndcg"][key] = {
                 "model_a": model_a,
                 "model_b": model_b,
                 "mean_ndcg_a": sum(ndcg_a) / len(ndcg_a) if ndcg_a else 0,
                 "mean_ndcg_b": sum(ndcg_b) / len(ndcg_b) if ndcg_b else 0,
+                "gains_per_query": {
+                    f"I{q}": (float('inf') if gains[q-1] == float('inf') else float(gains[q-1])) 
+                    for q in range(1, len(gains)+1)
+                },
+                "mean_gain": sum(g for g in gains if isinstance(g, (int, float)) and not math.isinf(g)) / len(gains) if gains else 0
+            }
+
+    # Calcul des gains (%) pour les 10 premières requêtes (DCG)
+    for i, model_a in enumerate(model_names):
+        for model_b in model_names[i+1:]:
+            key = f"{model_a}_vs_{model_b}"
+            
+            # Récupérer les DCG@20 pour les requêtes 1 à 10
+            dcg_a = []
+            dcg_b = []
+            
+            for q in range(1, 11):
+                query_id = str(q)
+                if query_id in all_metrics[model_a]["query_metrics"]:
+                    dcg_a.append(all_metrics[model_a]["query_metrics"][query_id]["dcg@20"])
+                if query_id in all_metrics[model_b]["query_metrics"]:
+                    dcg_b.append(all_metrics[model_b]["query_metrics"][query_id]["dcg@20"])
+            
+            # Calculer les gains
+            gains = calculate_gain_percentage(dcg_a, dcg_b)
+            
+            comparison["gains_comparison_dcg"][key] = {
+                "model_a": model_a,
+                "model_b": model_b,
+                "mean_dcg_a": sum(dcg_a) / len(dcg_a) if dcg_a else 0,
+                "mean_dcg_b": sum(dcg_b) / len(dcg_b) if dcg_b else 0,
                 "gains_per_query": {
                     f"I{q}": (float('inf') if gains[q-1] == float('inf') else float(gains[q-1])) 
                     for q in range(1, len(gains)+1)

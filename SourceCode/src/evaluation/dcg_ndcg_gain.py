@@ -5,30 +5,61 @@ import math
 import json
 from collections import defaultdict
 import os
+import random
 
+# def dcg_at_k(relevance_scores, k=20):
+#     """
+#     Calcule le DCG@k (Discounted Cumulative Gain).
+    
+#     :param relevance_scores: Liste des scores de pertinence (ex: [3, 2, 0, 1, ...])
+#     :param k: Nombre de résultats à considérer (cutoff)
+#     :return: Valeur du DCG@k
+#     """
+#     relevance_scores = relevance_scores[:k]  # On prend les k premiers résultats
+#     # print(relevance_scores)
+#     if not relevance_scores:
+#         return 0.0
+    
+#     # Premier élément sans discount
+#     dcg = relevance_scores[0]
+    
+#     # Somme des éléments suivants avec discount log2
+#     for i, rel in enumerate(relevance_scores[1:], start=2):  
+#         if rel > 0:
+#             dcg += rel / math.log2(i)
+    
+#     return dcg
 
-def dcg_at_k(relevance_scores, k=20):
+def dcg_at_k(relevance_scores, k=20, shuffle=True):
     """
     Calcule le DCG@k (Discounted Cumulative Gain).
-    
-    :param relevance_scores: Liste des scores de pertinence (ex: [3, 2, 0, 1, ...])
-    :param k: Nombre de résultats à considérer (cutoff)
-    :return: Valeur du DCG@k
+
+    :param relevance_scores: Liste des scores de pertinence
+    :param k: cutoff
+    :param shuffle: si True, mélange aléatoirement les scores
+    :return: DCG@k
     """
-    relevance_scores = relevance_scores[:k]  # On prend les k premiers résultats
-    # print(relevance_scores)
-    if not relevance_scores:
+    scores = relevance_scores.copy()
+    scores = scores[:k]
+    # print("avant : ",scores)
+    if shuffle:
+        random.shuffle(scores)
+    # print("apres : ",scores)
+
+
+    if not scores:
         return 0.0
-    
+
     # Premier élément sans discount
-    dcg = relevance_scores[0]
-    
-    # Somme des éléments suivants avec discount log2
-    for i, rel in enumerate(relevance_scores[1:], start=2):  
+    dcg = scores[0]
+
+    # Discount logarithmique
+    for i, rel in enumerate(scores[1:], start=2):
         if rel > 0:
             dcg += rel / math.log2(i)
-    
+
     return dcg
+
 
 def ndcg_at_k(relevance_scores, k=20):
     """

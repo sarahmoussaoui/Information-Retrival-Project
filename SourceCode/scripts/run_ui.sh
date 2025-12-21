@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
-# Launch the UI (streamlit or pyqt). Adjust command as needed.
+# Launch the Streamlit UI
 
 set -euo pipefail
 
-echo "UI launcher placeholder."
+echo "Launching Information Retrieval System UI..."
+echo "=========================================="
+echo ""
+
+# Navigate to SourceCode directory
+cd "$(dirname "$0")/.."
+
+# Run Streamlit
+streamlit run src/ui/streamlit_app.py

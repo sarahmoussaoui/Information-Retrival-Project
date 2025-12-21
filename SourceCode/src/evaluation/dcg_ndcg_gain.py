@@ -8,22 +8,15 @@ import random
 
 
 
-def dcg_at_k(relevance_scores, k=20, shuffle=True):
+def dcg_at_k(relevance_scores, k=20):
     """
     Calcule le DCG@k (Discounted Cumulative Gain).
-
     :param relevance_scores: Liste des scores de pertinence
     :param k: cutoff
-    :param shuffle: si True, mélange aléatoirement les scores
     :return: DCG@k
     """
     scores = relevance_scores.copy()
     scores = scores[:k]
-    # print("avant : ",scores)
-    if shuffle:
-        random.shuffle(scores)
-    # print("apres : ",scores)
-
 
     if not scores:
         return 0.0
@@ -42,7 +35,6 @@ def dcg_at_k(relevance_scores, k=20, shuffle=True):
 def ndcg_at_k(relevance_scores, k=20):
     """
     Calcule le nDCG@k (Normalized Discounted Cumulative Gain).
-    
     :param relevance_scores: Liste des scores de pertinence
     :param k: Nombre de résultats à considérer
     :return: Valeur du nDCG@k
@@ -52,7 +44,7 @@ def ndcg_at_k(relevance_scores, k=20):
     
     # DCG idéal : scores triés par ordre décroissant
     ideal_scores = sorted(relevance_scores, reverse=True)
-    ideal_dcg = dcg_at_k(ideal_scores, k,shuffle=False)
+    ideal_dcg = dcg_at_k(ideal_scores, k)
     
     # Éviter la division par zéro
     if ideal_dcg == 0:
@@ -282,17 +274,17 @@ def create_comparison_report(all_metrics, output_dir="metrics"):
 if __name__ == "__main__":
     # 1. Liste de tous tes fichiers JSON de résultats
     MODEL_JSON_PATHS = [
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BM25.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Dirichlet.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Laplace.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_JelinekMercer.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_MLE.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LSI_k100.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\VSM_Cosine.json",        
+        r"SourceCode\Results\BIR_no_relevance.json",
+        r"SourceCode\Results\BIR_with_relevance.json",
+        r"SourceCode\Results\BM25.json",
+        r"SourceCode\Results\ExtendedBIR_no_relevance.json",
+        r"SourceCode\Results\ExtendedBIR_with_relevance.json",
+        r"SourceCode\Results\LM_Dirichlet.json",
+        r"SourceCode\Results\LM_Laplace.json",
+        r"SourceCode\Results\LM_JelinekMercer.json",
+        r"SourceCode\Results\LM_MLE.json",
+        r"SourceCode\Results\LSI_k100.json",
+        r"SourceCode\Results\VSM_Cosine.json",        
     ]
     
     # 2. Évaluer tous les modèles
@@ -300,7 +292,7 @@ if __name__ == "__main__":
     print(f"Nombre de modèles à évaluer: {len(MODEL_JSON_PATHS)}")
     
     # Créer le dossier pour les résultats
-    OUTPUT_DIR = "evaluation_results_jdid"
+    OUTPUT_DIR = "evaluation_results_dcg_ndcg_gain"
     
     # Évaluer tous les modèles
     all_metrics = evaluate_all_models(

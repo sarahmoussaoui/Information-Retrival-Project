@@ -28,46 +28,51 @@ def _to_set(doc_list):
     """Convert list of doc_ids to set, handling string/int conversion."""
     return set(str(doc_id) for doc_id in doc_list)
 
-
-def precision(retrieved, relevant, k=40):
+def precision(retrieved, relevant):
     """
-    Precision (cours):
-    nombre de documents pertinents sélectionnés
-    -------------------------------------------
-    nombre total de documents sélectionnés
-
-    Ici, les documents sélectionnés = top-k
+    Calculate precision: | retrieved and relevant | / |retrieved|
+    
+    Args:
+        retrieved: List of retrieved document IDs (or list of dicts with "doc_id")
+        relevant: Set or list of relevant document IDs
+        
+    Returns:
+        float: Precision score (0.0 to 1.0)
     """
-    if k <= 0:
+    if len(retrieved) == 0:
         return 0.0
+    
+    retrieved_ids = _extract_doc_ids(retrieved)
+    relevant_set = _to_set(relevant)
+    retrieved_set = _to_set(retrieved_ids)
+    
+    # True positives: documents that are both retrieved and relevant
+    tp = len(retrieved_set & relevant_set)
+    
+    return tp / len(retrieved_set)
 
-    retrieved_ids = _extract_doc_ids(retrieved)[:k]
-    if not retrieved_ids:
-        return 0.0
-
-    relevant_set = set(map(str, relevant))
-
-    tp = sum(1 for doc_id in retrieved_ids if doc_id in relevant_set)
-
-    return tp / len(retrieved_ids)
-
-
-def recall(retrieved, relevant, k=40):
+def recall(retrieved, relevant):
     """
-    Recall (cours):
-    nombre de documents pertinents sélectionnés
-    -------------------------------------------
-    nombre total de documents pertinents
+    Calculate recall: |retrieved and relevant| / |relevant|
+    
+    Args:
+        retrieved: List of retrieved document IDs (or list of dicts with "doc_id")
+        relevant: Set or list of relevant document IDs
+        
+    Returns:
+        float: Recall score (0.0 to 1.0)
     """
-    if not relevant:
+    if len(relevant) == 0:
         return 0.0
-
-    retrieved_ids = _extract_doc_ids(retrieved)[:k]
-    relevant_set = set(map(str, relevant))
-
-    tp = sum(1 for doc_id in retrieved_ids if doc_id in relevant_set)
-
-    return tp / len(relevant_set)
+    
+    retrieved_ids = _extract_doc_ids(retrieved)
+    relevant_set = _to_set(relevant)
+    retrieved_set = _to_set(retrieved_ids)
+    
+    # True positives: documents that are both retrieved and relevant
+    tp = len(retrieved_set & relevant_set)
+    
+    return tp / len(relevant_set) 
 
 
 def f1_score(precision_val, recall_val):

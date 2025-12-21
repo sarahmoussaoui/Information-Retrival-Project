@@ -77,7 +77,7 @@ def calculate_gain_percentage(score1, score2):
     for score1_val, score2_val in zip(score1, score2):
         if score1_val == 0:
             if score2_val > 0:
-                gains.append(float('inf'))  # Gain infini (de 0 à >0)
+                gains.append(100.0)  # Gain infini (de 0 à >0)
             else:
                 gains.append(0.0)
         else:
@@ -85,7 +85,6 @@ def calculate_gain_percentage(score1, score2):
             gains.append(gain)
     
     return gains
-
 
 def extract_scores_from_model_results(model_results, top_k=20):
     """

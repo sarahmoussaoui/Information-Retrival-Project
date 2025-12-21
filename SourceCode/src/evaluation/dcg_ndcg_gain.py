@@ -1,6 +1,5 @@
 """DCG/nDCG and gain metrics."""
 
-import numpy as np
 import math
 import json
 from collections import defaultdict
@@ -63,289 +62,147 @@ def dcg_at_k(relevance_scores, k=20, shuffle=True):
 
 def ndcg_at_k(relevance_scores, k=20):
     """
-    Calcule le nDCG@k (Normalized Discounted Cumulative Gain).
+    normalized DCG at rank k
+    nDCG@k = DCG@k / IDCG@k
     
-    :param relevance_scores: Liste des scores de pertinence
-    :param k: Nombre de résultats à considérer
-    :return: Valeur du nDCG@k
+    IDCG is the ideal DCG (best possible ranking)
+    so nDCG tells us how close we are to perfect
     """
-    # DCG actuel
-    dcg = dcg_at_k(relevance_scores, k)
+    actual_dcg = dcg_at_k(relevance_scores, k)
     
-    # DCG idéal : scores triés par ordre décroissant
-    ideal_scores = sorted(relevance_scores, reverse=True)
-    ideal_dcg = dcg_at_k(ideal_scores, k)
+    # ideal DCG - sort relevance scores descending
+    ideal_relevance = sorted(relevance_scores, reverse=True)
+    ideal_dcg = dcg_at_k(ideal_relevance, k)
     
-    # Éviter la division par zéro
+    # avoid division by zero
     if ideal_dcg == 0:
         return 0.0
     
-    return dcg / ideal_dcg
+    return actual_dcg / ideal_dcg
 
-def calculate_gain_percentage(score1, score2):
+
+def calculate_gain_percentage(baseline_score, comparison_score):
     """
-    Calcule le gain (%) entre deux séries de scores nDCG@20.
+    calculate gain percentage between two scores
+    Gain(%) = (comparison - baseline) / baseline * 100
     
-    :param score1: Liste des metriques pour un modele A 
-    :param score2: Liste des metriques pour un modele B 
-    :return: Liste des gains (%) pour chaque requête
+    for lab5: compare systems using nDCG@20 on first 10 queries
+    positive gain means comparison is better
     """
-    gains = []
-    
-    for score1_val, score2_val in zip(score1, score2):
-        if score1_val == 0:
-            if score2_val > 0:
-                gains.append(float('inf'))  # Gain infini (de 0 à >0)
-            else:
-                gains.append(0.0)
+    if baseline_score == 0:
+        if comparison_score > 0:
+            return float('inf')  # infinit gain
         else:
-            gain = ((score2_val - score1_val) / score1_val) * 100
-            gains.append(gain)
+            return 0.0
     
-    return gains
+    gain = ((comparison_score - baseline_score) / baseline_score) * 100
+    return gain
 
 
-def extract_scores_from_model_results(model_results, top_k=20):
+def get_relevance_vector(ranked_list, relevant_docs):
     """
-    Extrait uniquement les scores du modèle 
-    :param model_results: Liste de dicts [{"doc_id": "180", "score": 3.97}, ...]
-    :param top_k: Nombre de résultats à considérer
-    :return: Liste des scores normalisés
+    convert ranked list to relevance vector
+    1 if doc is relevant, 0 otherwise
+    
+    this is what we feed to DCG/nDCG functions
     """
-    top_results = model_results[:top_k]
-    # Extraire juste les scores de similarité/pertinence
-    scores = [result["score"] for result in top_results]
-    return scores
+    relevant_set = set(str(d) for d in relevant_docs)
+    relevance_vector = []
+    
+    for doc_id in ranked_list:
+        if str(doc_id) in relevant_set:
+            relevance_vector.append(1)
+        else:
+            relevance_vector.append(0)
+    
+    return relevance_vector
 
-def evaluate_single_model(model_data, model_name, output_dir="metrics"):
-    """
-    Évalue un seul modèle avec seulement DCG et nDCG
-    """
-    os.makedirs(output_dir, exist_ok=True)
-    
-    metrics = {
-        "model_name": model_name,
-        "query_metrics": {},
-        "overall_metrics": {}
-    }
-    
-    # Pour chaque requête
-    for query_id, query_results in model_data["queries"].items():
-        # Extraire les scores du modèle 
-        model_scores = extract_scores_from_model_results(query_results, top_k=20)
-        
-        # Calculer DCG et nDCG sur les scores du modèle
-        # Pour nDCG, on considère que les scores du modèle sont des "scores de pertinence"
-        dcg_20 = dcg_at_k(model_scores, k=20)
-        ndcg_20 = ndcg_at_k(model_scores, k=20)
-        
-        # Ajouter au dictionnaire
-        metrics["query_metrics"][query_id] = {
-            "dcg@20": float(dcg_20),
-            "ndcg@20": float(ndcg_20),
-            "model_scores": model_scores[:20]  # Garder les 20 premiers scores
-        }
-    
-    # Calculer les moyennes
-    all_ndcg = [q["ndcg@20"] for q in metrics["query_metrics"].values()]
-    all_dcg = [q["dcg@20"] for q in metrics["query_metrics"].values()]
-    
-    metrics["overall_metrics"] = {
-        "mean_ndcg@20": float(sum(all_ndcg) / len(all_ndcg) if all_ndcg else 0),
-        "mean_dcg@20": float(sum(all_dcg) / len(all_dcg) if all_dcg else 0),
-        "total_queries_evaluated": len(metrics["query_metrics"])
-    }
-    
-    # Sauvegarder en JSON
-    output_file = os.path.join(output_dir, f"{model_name}_metrics.json")
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(metrics, f, indent=2, ensure_ascii=False)
-    
-    print(f" Métriques sauvegardées pour {model_name}: {output_file}")
-    
-    return metrics
 
-def evaluate_all_models(json_paths, output_dir="metrics"):
+def evaluate_dcg_ndcg(runs, qrels, k=20):
     """
-    Évalue tous les modèles à partir des fichiers JSON
+    evaluate DCG@k and nDCG@k for all queries
+    returns a dict with results for each query
     """
-    all_metrics = {}
+    results = {}
     
-    for json_path in json_paths:
-        # Charger les résultats du modèle
-        with open(json_path, 'r', encoding='utf-8') as f:
-            model_data = json.load(f)
-        
-        # Extraire le nom du modèle
-        model_name = model_data.get("model", os.path.basename(json_path).replace('.json', ''))
-        
-        print(f"\n{'='*50}")
-        print(f"Évaluation du modèle: {model_name}")
-        print(f"Fichier: {json_path}")
-        
-        # Évaluer le modèle
-        metrics = evaluate_single_model(
-            model_data, 
-            model_name, 
-            output_dir
-        )
-        
-        all_metrics[model_name] = metrics
-        
-        # Afficher un résumé
-        print(f"  nDCG@20 moyen: {metrics['overall_metrics']['mean_ndcg@20']:.4f}")
-        print(f"  DCG@20 moyen: {metrics['overall_metrics']['mean_dcg@20']:.4f}")
-    
-    # Sauvegarder toutes les métriques
-    all_metrics_file = os.path.join(output_dir, "all_models_comparison.json")
-    with open(all_metrics_file, 'w', encoding='utf-8') as f:
-        json.dump(all_metrics, f, indent=2, ensure_ascii=False)
-    
-    print(f"\n{'='*50}")
-    print(f" Toutes les métriques sauvegardées dans: {output_dir}/")
-    print(f" Fichier de comparaison: {all_metrics_file}")
-    
-    return all_metrics
-
-def create_comparison_report(all_metrics, output_dir="metrics"):
-    """
-    Crée un rapport de comparaison entre tous les modèles
-    """
-    comparison = {
-        "model_comparison": {},
-        "ranking_by_ndcg": [],
-        "ranking_by_dcg": [],
-        "gains_comparison": {}
-    }
-    
-    model_names = list(all_metrics.keys())
-    
-    # Comparaison des métriques globales
-    for model_name, metrics in all_metrics.items():
-        comparison["model_comparison"][model_name] = {
-            "mean_ndcg@20": metrics["overall_metrics"]["mean_ndcg@20"],
-            "mean_dcg@20": metrics["overall_metrics"]["mean_dcg@20"]
-        }
-    
-    # Classement par nDCG
-    sorted_by_ndcg = sorted(
-        model_names,
-        key=lambda x: all_metrics[x]["overall_metrics"]["mean_ndcg@20"],
-        reverse=True
-    )
-    comparison["ranking_by_ndcg"] = [
-        {
-            "rank": i+1,
-            "model": model, 
-            "mean_ndcg@20": all_metrics[model]["overall_metrics"]["mean_ndcg@20"]
-        }
-        for i, model in enumerate(sorted_by_ndcg)
-    ]
-    
-    # Classement par DCG
-    sorted_by_dcg = sorted(
-        model_names,
-        key=lambda x: all_metrics[x]["overall_metrics"]["mean_dcg@20"],
-        reverse=True
-    )
-    comparison["ranking_by_dcg"] = [
-        {
-            "rank": i+1,
-            "model": model, 
-            "mean_dcg@20": all_metrics[model]["overall_metrics"]["mean_dcg@20"]
-        }
-        for i, model in enumerate(sorted_by_dcg)
-    ]
-    
-    # Calcul des gains (%) pour les 10 premières requêtes (nDCG)
-    for i, model_a in enumerate(model_names):
-        for model_b in model_names[i+1:]:
-            key = f"{model_a}_vs_{model_b}"
+    for query_id in runs:
+        if query_id in qrels:
+            ranked_list = runs[query_id]
+            relevant_docs = qrels[query_id]
             
-            # Récupérer les nDCG@20 pour les requêtes 1 à 10
-            ndcg_a = []
-            ndcg_b = []
+            # convert to relevance vector (1s and 0s)
+            relevance_vector = get_relevance_vector(ranked_list, relevant_docs)
             
-            for q in range(1, 11):
-                query_id = str(q)
-                if query_id in all_metrics[model_a]["query_metrics"]:
-                    ndcg_a.append(all_metrics[model_a]["query_metrics"][query_id]["ndcg@20"])
-                if query_id in all_metrics[model_b]["query_metrics"]:
-                    ndcg_b.append(all_metrics[model_b]["query_metrics"][query_id]["ndcg@20"])
+            # calculate metrics
+            dcg = dcg_at_k(relevance_vector, k)
+            ndcg = ndcg_at_k(relevance_vector, k)
             
-            # Calculer les gains
-            gains = calculate_gain_percentage(ndcg_a, ndcg_b)
-            
-            comparison["gains_comparison"][key] = {
-                "model_a": model_a,
-                "model_b": model_b,
-                "mean_ndcg_a": sum(ndcg_a) / len(ndcg_a) if ndcg_a else 0,
-                "mean_ndcg_b": sum(ndcg_b) / len(ndcg_b) if ndcg_b else 0,
-                "gains_per_query": {
-                    f"I{q}": (float('inf') if gains[q-1] == float('inf') else float(gains[q-1])) 
-                    for q in range(1, len(gains)+1)
-                },
-                "mean_gain": sum(g for g in gains if isinstance(g, (int, float)) and not math.isinf(g)) / len(gains) if gains else 0
+            results[query_id] = {
+                f'dcg@{k}': dcg,
+                f'ndcg@{k}': ndcg
             }
     
-    # Sauvegarder le rapport
-    report_file = os.path.join(output_dir, "comparison_report.json")
-    with open(report_file, 'w', encoding='utf-8') as f:
-        json.dump(comparison, f, indent=2, ensure_ascii=False)
-    
-    print(f" Rapport de comparaison sauvegardé: {report_file}")
-    
-    return comparison
+    return results
 
-# ==========================================
-# UTILISATION PRINCIPALE
-# ==========================================
 
-if __name__ == "__main__":
-    # 1. Liste de tous tes fichiers JSON de résultats
-    MODEL_JSON_PATHS = [
-        r"SourceCode\Results\BIR_no_relevance.json",
-        r"SourceCode\Results\BIR_with_relevance.json",
-        r"SourceCode\Results\BM25.json",
-        r"SourceCode\Results\ExtendedBIR_no_relevance.json",
-        r"SourceCode\Results\ExtendedBIR_with_relevance.json",
-        r"SourceCode\Results\LM_Dirichlet.json",
-        r"SourceCode\Results\LM_Laplace.json",
-        r"SourceCode\Results\LM_JelinekMercer.json",
-        r"SourceCode\Results\LM_MLE.json",
-        r"SourceCode\Results\LSI_k100.json",
-        r"SourceCode\Results\VSM_Cosine.json",        
-    ]
+def calculate_mean_dcg_ndcg(dcg_ndcg_results, k=20):
+    """
+    calculate mean DCG@k and nDCG@k across all queries
+    just takes the average
+    """
+    if not dcg_ndcg_results:
+        return 0.0, 0.0
     
-    # 2. Évaluer tous les modèles
-    print(" DÉBUT DE L'ÉVALUATION")
-    print(f"Nombre de modèles à évaluer: {len(MODEL_JSON_PATHS)}")
+    dcg_key = f'dcg@{k}'
+    ndcg_key = f'ndcg@{k}'
     
-    # Créer le dossier pour les résultats
-    OUTPUT_DIR = "evaluation_results"
+    dcg_values = [r[dcg_key] for r in dcg_ndcg_results.values() if dcg_key in r]
+    ndcg_values = [r[ndcg_key] for r in dcg_ndcg_results.values() if ndcg_key in r]
     
-    # Évaluer tous les modèles
-    all_metrics = evaluate_all_models(
-        MODEL_JSON_PATHS,
-        output_dir=OUTPUT_DIR
-    )
+    mean_dcg = sum(dcg_values) / len(dcg_values) if dcg_values else 0.0
+    mean_ndcg = sum(ndcg_values) / len(ndcg_values) if ndcg_values else 0.0
     
-    # 3. Créer un rapport de comparaison
-    print("\n CRÉATION DU RAPPORT DE COMPARAISON")
-    comparison_report = create_comparison_report(all_metrics, OUTPUT_DIR)
+    return mean_dcg, mean_ndcg
+
+
+def compare_systems_with_gain(baseline_runs, comparison_runs, qrels, k=20, num_queries=10):
+    """
+    compare two systems using nDCG@k on first num_queries queries
+    calculates gain percentage for each query
     
-    # 4. Afficher un résumé dans la console
-    print("\n" + "="*60)
-    print(" CLASSEMENT FINAL DES MODÈLES")
-    print("="*60)
+    for lab5: num_queries=10 (I1 to I10), k=20
+    """
+    gains = {}
     
-    print("\nPar nDCG@20 moyen:")
-    for entry in comparison_report["ranking_by_ndcg"]:
-        print(f"  {entry['rank']}. {entry['model']}: {entry['mean_ndcg@20']:.4f}")
+    # check first 10 queries
+    for i in range(1, num_queries + 1):
+        query_id = str(i)
+        
+        if query_id in baseline_runs and query_id in comparison_runs and query_id in qrels:
+            # get relevance vectors for both systems
+            baseline_rel = get_relevance_vector(baseline_runs[query_id], qrels[query_id])
+            comparison_rel = get_relevance_vector(comparison_runs[query_id], qrels[query_id])
+            
+            # calculate nDCG@k for both
+            baseline_ndcg = ndcg_at_k(baseline_rel, k)
+            comparison_ndcg = ndcg_at_k(comparison_rel, k)
+            
+            # calculate gain
+            gain = calculate_gain_percentage(baseline_ndcg, comparison_ndcg)
+            gains[query_id] = {
+                'baseline_ndcg': baseline_ndcg,
+                'comparison_ndcg': comparison_ndcg,
+                'gain_percent': gain
+            }
     
-    print("\nPar DCG@20 moyen:")
-    for entry in comparison_report["ranking_by_dcg"]:
-        print(f"  {entry['rank']}. {entry['model']}: {entry['mean_dcg@20']:.4f}")
+    # calculate mean gain (skip infinite values)
+    valid_gains = [g['gain_percent'] for g in gains.values() 
+                   if g['gain_percent'] != float('inf') and not math.isnan(g['gain_percent'])]
     
-    print("\n Évaluation terminée avec succès!")
-    print(f" Tous les résultats sont dans: {OUTPUT_DIR}/")
+    mean_gain = sum(valid_gains) / len(valid_gains) if valid_gains else 0.0
+    
+    return {
+        'per_query_gains': gains,
+        'mean_gain_percent': mean_gain,
+        'num_queries_compared': len(gains)
+    }

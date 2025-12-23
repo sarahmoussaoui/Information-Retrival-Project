@@ -227,7 +227,7 @@ def display_pr_curves(model_name):
     """Display Precision-Recall curves."""
     st.header("Precision-Recall Curves")
     
-    curves_dir = Path("Results/curves")
+    curves_dir = Path("evaluation_results/evaluation_results_PRCurve_MAP_P@K_RR/Curves")
     
     if not curves_dir.exists():
         st.warning("PR curves directory not found.")

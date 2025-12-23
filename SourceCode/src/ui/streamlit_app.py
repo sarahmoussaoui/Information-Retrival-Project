@@ -19,7 +19,7 @@ from components import (
 # Page configuration
 st.set_page_config(
     page_title="IR System - Query Search & Evaluation",
-    page_icon="🔍",
+
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -59,13 +59,13 @@ st.markdown("""
 
 def render_header():
     """Render the main header."""
-    st.markdown('<h1 class="main-header">🔍 Information Retrieval System</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header">Information Retrieval System</h1>', unsafe_allow_html=True)
     st.markdown("---")
 
 
 def render_sidebar():
     """Render the sidebar with query and model selection."""
-    st.sidebar.title("⚙️ Configuration")
+    st.sidebar.title("Configuration")
     
     # Load queries
     queries = load_queries()
@@ -101,7 +101,7 @@ def render_sidebar():
 
 def display_ranked_results(query_id, model_name, documents, results, top_k=20):
     """Display ranked search results."""
-    st.header(f"📄 Ranked Results for Query {query_id} - {model_name}")
+    st.header(f"Ranked Results for Query {query_id} - {model_name}")
     
     query_results = results.get("queries", {}).get(str(query_id), [])
     
@@ -135,7 +135,7 @@ def display_ranked_results(query_id, model_name, documents, results, top_k=20):
 
 def display_metrics(query_id, model_name, metrics_data):
     """Display evaluation metrics for selected query and model."""
-    st.header("📊 Evaluation Metrics")
+    st.header("Evaluation Metrics")
     
     query_metrics = metrics_data.get("query_metrics", {}).get(str(query_id), {})
     
@@ -179,7 +179,7 @@ def display_metrics(query_id, model_name, metrics_data):
 
 def display_all_models_comparison(query_id):
     """Display comparison of all models for a specific query."""
-    st.header("🔄 Model Comparison")
+    st.header("Model Comparison")
     
     # Load comparison data
     comparison_path = Path("evaluation_results/evaluation_results_dcg_ndcg_gain/all_models_comparison.json")
@@ -225,7 +225,7 @@ def display_all_models_comparison(query_id):
 
 def display_pr_curves(model_name):
     """Display Precision-Recall curves."""
-    st.header("📈 Precision-Recall Curves")
+    st.header("Precision-Recall Curves")
     
     curves_dir = Path("Results/curves")
     
@@ -276,10 +276,6 @@ def display_pr_curves(model_name):
 
 def main():
     """Main application."""
-    # Change to SourceCode directory
-    if Path("SourceCode").exists():
-        os.chdir("SourceCode")
-    
     render_header()
     
     # Sidebar
@@ -290,7 +286,7 @@ def main():
     documents = load_documents()
     
     # Main content
-    tab1, tab2, tab3, tab4 = st.tabs(["📄 Results", "📊 Metrics", "🔄 Model Comparison", "📈 PR Curves"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Results", "Metrics", "Model Comparison", "PR Curves"])
     
     with tab1:
         if selected_query and selected_model:

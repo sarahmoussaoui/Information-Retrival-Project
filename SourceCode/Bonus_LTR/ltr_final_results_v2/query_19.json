@@ -1,0 +1,126 @@
+{
+  "query_id": "19",
+  "total_documents": 1033,
+  "top_20": [
+    {
+      "doc_id": "844",
+      "ltr_score": 0.9999861992269575,
+      "relevance_label": 1,
+      "rank": 1
+    },
+    {
+      "doc_id": "847",
+      "ltr_score": 0.9999726079041734,
+      "relevance_label": 1,
+      "rank": 2
+    },
+    {
+      "doc_id": "861",
+      "ltr_score": 0.9999297577389938,
+      "relevance_label": 1,
+      "rank": 3
+    },
+    {
+      "doc_id": "551",
+      "ltr_score": 0.9997011522902328,
+      "relevance_label": 0,
+      "rank": 4
+    },
+    {
+      "doc_id": "863",
+      "ltr_score": 0.9983958339905555,
+      "relevance_label": 0,
+      "rank": 5
+    },
+    {
+      "doc_id": "562",
+      "ltr_score": 0.9974963164842134,
+      "relevance_label": 1,
+      "rank": 6
+    },
+    {
+      "doc_id": "555",
+      "ltr_score": 0.9962108560285124,
+      "relevance_label": 1,
+      "rank": 7
+    },
+    {
+      "doc_id": "545",
+      "ltr_score": 0.9960739784028565,
+      "relevance_label": 1,
+      "rank": 8
+    },
+    {
+      "doc_id": "859",
+      "ltr_score": 0.9955711938659247,
+      "relevance_label": 1,
+      "rank": 9
+    },
+    {
+      "doc_id": "564",
+      "ltr_score": 0.9953682587425373,
+      "relevance_label": 1,
+      "rank": 10
+    },
+    {
+      "doc_id": "866",
+      "ltr_score": 0.9936971262046204,
+      "relevance_label": 1,
+      "rank": 11
+    },
+    {
+      "doc_id": "864",
+      "ltr_score": 0.9898876297996472,
+      "relevance_label": 1,
+      "rank": 12
+    },
+    {
+      "doc_id": "865",
+      "ltr_score": 0.9879942835799742,
+      "relevance_label": 1,
+      "rank": 13
+    },
+    {
+      "doc_id": "860",
+      "ltr_score": 0.986876524057232,
+      "relevance_label": 1,
+      "rank": 14
+    },
+    {
+      "doc_id": "673",
+      "ltr_score": 0.9841375076941078,
+      "relevance_label": 0,
+      "rank": 15
+    },
+    {
+      "doc_id": "671",
+      "ltr_score": 0.9770802698978978,
+      "relevance_label": 0,
+      "rank": 16
+    },
+    {
+      "doc_id": "880",
+      "ltr_score": 0.9705732928332585,
+      "relevance_label": 0,
+      "rank": 17
+    },
+    {
+      "doc_id": "858",
+      "ltr_score": 0.9684630763181775,
+      "relevance_label": 1,
+      "rank": 18
+    },
+    {
+      "doc_id": "590",
+      "ltr_score": 0.9494511026766541,
+      "relevance_label": 0,
+      "rank": 19
+    },
+    {
+      "doc_id": "869",
+      "ltr_score": 0.949326548448138,
+      "relevance_label": 0,
+      "rank": 20
+    }
+  ]
+}

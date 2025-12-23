@@ -1,0 +1,2256 @@
+{
+  "model_comparison": {
+    "BIR_no_relevance": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 50.41375725110534
+    },
+    "BIR_with_relevance": {
+      "mean_ndcg@20": 0.8666666666666667,
+      "mean_dcg@20": 2.236604406600966
+    },
+    "BM25": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 32.01454924298682
+    },
+    "ExtendedBIR_no_relevance": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 38.88418337351813
+    },
+    "ExtendedBIR_with_relevance": {
+      "mean_ndcg@20": 0.9,
+      "mean_dcg@20": 2.8192102281434686
+    },
+    "LM_Dirichlet": {
+      "mean_ndcg@20": 0.6666666666666666,
+      "mean_dcg@20": 4.209045471081377e-05
+    },
+    "LM_Laplace": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 1.0320774258317068e-08
+    },
+    "LM_JelinekMercer": {
+      "mean_ndcg@20": 0.6666666666666666,
+      "mean_dcg@20": 1.415409720105856e-05
+    },
+    "LM_MLE": {
+      "mean_ndcg@20": 0.06666666666666667,
+      "mean_dcg@20": 0.0003186755506626727
+    },
+    "LSI_k100": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 4.678941894228337
+    },
+    "VSM_Cosine": {
+      "mean_ndcg@20": 1.0,
+      "mean_dcg@20": 1.6287139744426742
+    }
+  },
+  "ranking_by_ndcg": [
+    {
+      "rank": 1,
+      "model": "BIR_no_relevance",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 2,
+      "model": "BM25",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 3,
+      "model": "ExtendedBIR_no_relevance",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 4,
+      "model": "LM_Laplace",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 5,
+      "model": "LSI_k100",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 6,
+      "model": "VSM_Cosine",
+      "mean_ndcg@20": 1.0
+    },
+    {
+      "rank": 7,
+      "model": "ExtendedBIR_with_relevance",
+      "mean_ndcg@20": 0.9
+    },
+    {
+      "rank": 8,
+      "model": "BIR_with_relevance",
+      "mean_ndcg@20": 0.8666666666666667
+    },
+    {
+      "rank": 9,
+      "model": "LM_Dirichlet",
+      "mean_ndcg@20": 0.6666666666666666
+    },
+    {
+      "rank": 10,
+      "model": "LM_JelinekMercer",
+      "mean_ndcg@20": 0.6666666666666666
+    },
+    {
+      "rank": 11,
+      "model": "LM_MLE",
+      "mean_ndcg@20": 0.06666666666666667
+    }
+  ],
+  "ranking_by_dcg": [
+    {
+      "rank": 1,
+      "model": "BIR_no_relevance",
+      "mean_dcg@20": 50.41375725110534
+    },
+    {
+      "rank": 2,
+      "model": "ExtendedBIR_no_relevance",
+      "mean_dcg@20": 38.88418337351813
+    },
+    {
+      "rank": 3,
+      "model": "BM25",
+      "mean_dcg@20": 32.01454924298682
+    },
+    {
+      "rank": 4,
+      "model": "LSI_k100",
+      "mean_dcg@20": 4.678941894228337
+    },
+    {
+      "rank": 5,
+      "model": "ExtendedBIR_with_relevance",
+      "mean_dcg@20": 2.8192102281434686
+    },
+    {
+      "rank": 6,
+      "model": "BIR_with_relevance",
+      "mean_dcg@20": 2.236604406600966
+    },
+    {
+      "rank": 7,
+      "model": "VSM_Cosine",
+      "mean_dcg@20": 1.6287139744426742
+    },
+    {
+      "rank": 8,
+      "model": "LM_MLE",
+      "mean_dcg@20": 0.0003186755506626727
+    },
+    {
+      "rank": 9,
+      "model": "LM_Dirichlet",
+      "mean_dcg@20": 4.209045471081377e-05
+    },
+    {
+      "rank": 10,
+      "model": "LM_JelinekMercer",
+      "mean_dcg@20": 1.415409720105856e-05
+    },
+    {
+      "rank": 11,
+      "model": "LM_Laplace",
+      "mean_dcg@20": 1.0320774258317068e-08
+    }
+  ],
+  "gains_comparison_ndcg": {
+    "BIR_no_relevance_vs_BIR_with_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "BIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.9,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -10.0
+    },
+    "BIR_no_relevance_vs_BM25": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "BM25",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_LM_Dirichlet": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BIR_no_relevance_vs_LM_Laplace": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_LM_JelinekMercer": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BIR_no_relevance_vs_LM_MLE": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "BIR_no_relevance_vs_LSI_k100": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_no_relevance_vs_VSM_Cosine": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BIR_with_relevance_vs_BM25": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "BM25",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 10.0
+    },
+    "BIR_with_relevance_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 10.0
+    },
+    "BIR_with_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 10.0
+    },
+    "BIR_with_relevance_vs_LM_Dirichlet": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -10.0
+    },
+    "BIR_with_relevance_vs_LM_Laplace": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 10.0
+    },
+    "BIR_with_relevance_vs_LM_JelinekMercer": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -10.0
+    },
+    "BIR_with_relevance_vs_LM_MLE": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -80.0
+    },
+    "BIR_with_relevance_vs_LSI_k100": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 10.0
+    },
+    "BIR_with_relevance_vs_VSM_Cosine": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.9,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 10.0
+    },
+    "BM25_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BM25",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BM25",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_LM_Dirichlet": {
+      "model_a": "BM25",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BM25_vs_LM_Laplace": {
+      "model_a": "BM25",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_LM_JelinekMercer": {
+      "model_a": "BM25",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "BM25_vs_LM_MLE": {
+      "model_a": "BM25",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "BM25_vs_LSI_k100": {
+      "model_a": "BM25",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "BM25_vs_VSM_Cosine": {
+      "model_a": "BM25",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_Dirichlet": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_Laplace": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_JelinekMercer": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_no_relevance_vs_LM_MLE": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "ExtendedBIR_no_relevance_vs_LSI_k100": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_no_relevance_vs_VSM_Cosine": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_Dirichlet": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_Laplace": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_JelinekMercer": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "ExtendedBIR_with_relevance_vs_LM_MLE": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "ExtendedBIR_with_relevance_vs_LSI_k100": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "ExtendedBIR_with_relevance_vs_VSM_Cosine": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Dirichlet_vs_LM_Laplace": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_Laplace",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 20.0
+    },
+    "LM_Dirichlet_vs_LM_JelinekMercer": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Dirichlet_vs_LM_MLE": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -70.0
+    },
+    "LM_Dirichlet_vs_LSI_k100": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 20.0
+    },
+    "LM_Dirichlet_vs_VSM_Cosine": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 20.0
+    },
+    "LM_Laplace_vs_LM_JelinekMercer": {
+      "model_a": "LM_Laplace",
+      "model_b": "LM_JelinekMercer",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.8,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": -20.0
+    },
+    "LM_Laplace_vs_LM_MLE": {
+      "model_a": "LM_Laplace",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -90.0
+    },
+    "LM_Laplace_vs_LSI_k100": {
+      "model_a": "LM_Laplace",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_Laplace_vs_VSM_Cosine": {
+      "model_a": "LM_Laplace",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    },
+    "LM_JelinekMercer_vs_LM_MLE": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "LM_MLE",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 0.1,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 0.0
+      },
+      "mean_gain": -70.0
+    },
+    "LM_JelinekMercer_vs_LSI_k100": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 20.0
+    },
+    "LM_JelinekMercer_vs_VSM_Cosine": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.8,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 20.0
+    },
+    "LM_MLE_vs_LSI_k100": {
+      "model_a": "LM_MLE",
+      "model_b": "LSI_k100",
+      "mean_ndcg_a": 0.1,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
+        "I10": 0.0
+      },
+      "mean_gain": 90.0
+    },
+    "LM_MLE_vs_VSM_Cosine": {
+      "model_a": "LM_MLE",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 0.1,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
+        "I10": 0.0
+      },
+      "mean_gain": 90.0
+    },
+    "LSI_k100_vs_VSM_Cosine": {
+      "model_a": "LSI_k100",
+      "model_b": "VSM_Cosine",
+      "mean_ndcg_a": 1.0,
+      "mean_ndcg_b": 1.0,
+      "gains_per_query": {
+        "I1": 0.0,
+        "I2": 0.0,
+        "I3": 0.0,
+        "I4": 0.0,
+        "I5": 0.0,
+        "I6": 0.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": 0.0,
+        "I10": 0.0
+      },
+      "mean_gain": 0.0
+    }
+  },
+  "gains_comparison_dcg": {
+    "BIR_no_relevance_vs_BIR_with_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "BIR_with_relevance",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 1.8585554414546572,
+      "gains_per_query": {
+        "I1": -95.0241872158681,
+        "I2": -96.43742096818747,
+        "I3": -98.09235919364599,
+        "I4": -92.0509446870602,
+        "I5": -96.48434375674582,
+        "I6": -95.92004697340622,
+        "I7": -91.88180022372686,
+        "I8": -100.0,
+        "I9": -96.6414022307882,
+        "I10": -91.59937015717243
+      },
+      "mean_gain": -95.41318754066012
+    },
+    "BIR_no_relevance_vs_BM25": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "BM25",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 28.23238077120319,
+      "gains_per_query": {
+        "I1": -15.740113098580336,
+        "I2": -46.460234641874074,
+        "I3": -45.36814644620533,
+        "I4": -34.17000011351244,
+        "I5": -38.56066976913593,
+        "I6": -33.90460285330107,
+        "I7": -28.030003883784822,
+        "I8": -24.518716478785375,
+        "I9": -35.65399292767852,
+        "I10": -33.23067668604162
+      },
+      "mean_gain": -33.56371568988995
+    },
+    "BIR_no_relevance_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 34.77914194877376,
+      "gains_per_query": {
+        "I1": 10.735776045187484,
+        "I2": -36.49052028421138,
+        "I3": -40.5298219485215,
+        "I4": -27.457386696080544,
+        "I5": -29.316487450215263,
+        "I6": -3.6219676904202096,
+        "I7": -1.3485906752211958,
+        "I8": -20.25951115488468,
+        "I9": -26.648591744738326,
+        "I10": -10.840048295558697
+      },
+      "mean_gain": -18.57771498946643
+    },
+    "BIR_no_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 2.719878834451326,
+      "gains_per_query": {
+        "I1": -91.8156152878536,
+        "I2": -98.10114548970611,
+        "I3": -99.7433555185102,
+        "I4": -91.53481664245456,
+        "I5": -97.182628696258,
+        "I6": -93.77921653916981,
+        "I7": -81.63229641902731,
+        "I8": -99.75080111615955,
+        "I9": -96.13634774193433,
+        "I10": -93.25459864924952
+      },
+      "mean_gain": -94.2930822100323
+    },
+    "BIR_no_relevance_vs_LM_Dirichlet": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 1.0851148457490502e-05,
+      "gains_per_query": {
+        "I1": -99.99999999999957,
+        "I2": -100.0,
+        "I3": -99.99999999992247,
+        "I4": -99.999999999998,
+        "I5": -100.0,
+        "I6": -99.99999999999997,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99931165234493
+      },
+      "mean_gain": -99.99993116522649
+    },
+    "BIR_no_relevance_vs_LM_Laplace": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_Laplace",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 1.2759732824006936e-08,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -99.99999999999999,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99999919058024
+      },
+      "mean_gain": -99.99999991905801
+    },
+    "BIR_no_relevance_vs_LM_JelinekMercer": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 2.9481048197775055e-06,
+      "gains_per_query": {
+        "I1": -99.9999999999997,
+        "I2": -100.0,
+        "I3": -99.99999999998248,
+        "I4": -99.9999999999995,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99981298559128
+      },
+      "mean_gain": -99.99998129855729
+    },
+    "BIR_no_relevance_vs_LM_MLE": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99721957133359
+      },
+      "mean_gain": -99.99972195713336
+    },
+    "BIR_no_relevance_vs_LSI_k100": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": -77.95339078234281,
+        "I2": -87.43792297901021,
+        "I3": -84.4700471423909,
+        "I4": -82.87909356422497,
+        "I5": -90.81108190433534,
+        "I6": -88.40684081527536,
+        "I7": -94.14438529664446,
+        "I8": -90.47627831828036,
+        "I9": -89.42360039227698,
+        "I10": -72.3794489218279
+      },
+      "mean_gain": -85.83820901166094
+    },
+    "BIR_no_relevance_vs_VSM_Cosine": {
+      "model_a": "BIR_no_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 42.36697573788477,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": -92.91510966274016,
+        "I2": -96.02754132152148,
+        "I3": -95.59346477131629,
+        "I4": -94.28622504619874,
+        "I5": -97.32171771604833,
+        "I6": -93.53006856251214,
+        "I7": -97.83644432844733,
+        "I8": -97.220773841686,
+        "I9": -96.69487499787665,
+        "I10": -92.23671876871954
+      },
+      "mean_gain": -95.36629390170667
+    },
+    "BIR_with_relevance_vs_BM25": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "BM25",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 28.23238077120319,
+      "gains_per_query": {
+        "I1": 1593.3894130849967,
+        "I2": 1402.8372670482618,
+        "I3": 2763.843831177528,
+        "I4": 728.148720758385,
+        "I5": 1647.592084657121,
+        "I6": 1520.003875433824,
+        "I7": 786.5265465203271,
+        "I8": 100.0,
+        "I9": 1815.859280982686,
+        "I10": 694.8133004689624
+      },
+      "mean_gain": 1305.3014320132093
+    },
+    "BIR_with_relevance_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 34.77914194877376,
+      "gains_per_query": {
+        "I1": 2125.4811595470137,
+        "I2": 1682.6826899465825,
+        "I3": 3017.472526976455,
+        "I4": 812.5941441850507,
+        "I5": 1910.5353782927925,
+        "I6": 2262.2338708649922,
+        "I7": 1115.1882442349452,
+        "I8": 100.0,
+        "I9": 2083.9890720964827,
+        "I10": 961.3484152091979
+      },
+      "mean_gain": 1607.1525501353512
+    },
+    "BIR_with_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 2.719878834451326,
+      "gains_per_query": {
+        "I1": 64.48337321385472,
+        "I2": -46.70000319044675,
+        "I3": -86.54649865766343,
+        "I4": 6.492948209398455,
+        "I5": -19.86215065400852,
+        "I6": 52.471938286596355,
+        "I7": 126.25340700108805,
+        "I8": 100.0,
+        "I9": 15.037659272084555,
+        "I10": -19.70362369305324
+      },
+      "mean_gain": 19.192704978785024
+    },
+    "BIR_with_relevance_vs_LM_Dirichlet": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 1.0851148457490502e-05,
+      "gains_per_query": {
+        "I1": -99.99999999999146,
+        "I2": -100.0,
+        "I3": -99.99999999593487,
+        "I4": -99.99999999997469,
+        "I5": -100.0,
+        "I6": -99.99999999999933,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": -99.99180599945525
+      },
+      "mean_gain": -89.99918059953556
+    },
+    "BIR_with_relevance_vs_LM_Laplace": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_Laplace",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 1.2759732824006936e-08,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -99.99999999999964,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": 100.0,
+        "I9": -100.0,
+        "I10": -99.99999036477291
+      },
+      "mean_gain": -79.99999903647725
+    },
+    "BIR_with_relevance_vs_LM_JelinekMercer": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 2.9481048197775055e-06,
+      "gains_per_query": {
+        "I1": -99.99999999999389,
+        "I2": -100.0,
+        "I3": -99.99999999908125,
+        "I4": -99.99999999999368,
+        "I5": -100.0,
+        "I6": -99.99999999999993,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": -99.99777380491435
+      },
+      "mean_gain": -89.99977738039831
+    },
+    "BIR_with_relevance_vs_LM_MLE": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": -99.9669021404533
+      },
+      "mean_gain": -89.99669021404533
+    },
+    "BIR_with_relevance_vs_LSI_k100": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": 343.0755370854145,
+        "I2": 252.61188338041097,
+        "I3": 714.0920872462776,
+        "I4": 115.38290729849197,
+        "I5": 161.37134747733904,
+        "I6": 184.1493298858734,
+        "I7": -27.87052715221919,
+        "I8": 100.0,
+        "I9": 214.9052174296283,
+        "I10": 228.79143105864193
+      },
+      "mean_gain": 228.65092137098586
+    },
+    "BIR_with_relevance_vs_VSM_Cosine": {
+      "model_a": "BIR_with_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 1.8585554414546572,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": 42.38659380139592,
+        "I2": 11.505138356396083,
+        "I3": 130.99396982945186,
+        "I4": -28.120075545327765,
+        "I5": -23.81842539097109,
+        "I6": 58.57857664820675,
+        "I7": -73.34931719867201,
+        "I8": 100.0,
+        "I9": -1.5921158400877025,
+        "I10": -7.586914594163095
+      },
+      "mean_gain": 20.89974300662289
+    },
+    "BM25_vs_ExtendedBIR_no_relevance": {
+      "model_a": "BM25",
+      "model_b": "ExtendedBIR_no_relevance",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 34.77914194877376,
+      "gains_per_query": {
+        "I1": 31.421700310069767,
+        "I2": 18.621139429684767,
+        "I3": 8.856233466286541,
+        "I4": 10.196891127155764,
+        "I5": 15.046033679378956,
+        "I6": 45.81655678029812,
+        "I7": 37.072967414753236,
+        "I8": 5.642730389850369,
+        "I9": 13.995275841776172,
+        "I10": 33.53430479622978
+      },
+      "mean_gain": 22.020383323548344
+    },
+    "BM25_vs_ExtendedBIR_with_relevance": {
+      "model_a": "BM25",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 2.719878834451326,
+      "gains_per_query": {
+        "I1": -90.28673665118757,
+        "I2": -96.45337536017853,
+        "I3": -99.53022922563467,
+        "I4": -87.14084251535444,
+        "I5": -95.41438473831755,
+        "I6": -90.5881744729922,
+        "I7": -74.47866531587272,
+        "I8": -99.66985340972585,
+        "I9": -93.99550580702987,
+        "I10": -89.89745437581762
+      },
+      "mean_gain": -91.7455221872111
+    },
+    "BM25_vs_LM_Dirichlet": {
+      "model_a": "BM25",
+      "model_b": "LM_Dirichlet",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 1.0851148457490502e-05,
+      "gains_per_query": {
+        "I1": -99.99999999999949,
+        "I2": -100.0,
+        "I3": -99.99999999985806,
+        "I4": -99.99999999999693,
+        "I5": -100.0,
+        "I6": -99.99999999999996,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.9989690660008
+      },
+      "mean_gain": -99.99989690658552
+    },
+    "BM25_vs_LM_Laplace": {
+      "model_a": "BM25",
+      "model_b": "LM_Laplace",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 1.2759732824006936e-08,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -99.99999999999997,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99999878773706
+      },
+      "mean_gain": -99.9999998787737
+    },
+    "BM25_vs_LM_JelinekMercer": {
+      "model_a": "BM25",
+      "model_b": "LM_JelinekMercer",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 2.9481048197775055e-06,
+      "gains_per_query": {
+        "I1": -99.99999999999964,
+        "I2": -100.0,
+        "I3": -99.99999999996793,
+        "I4": -99.99999999999925,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99971990968392
+      },
+      "mean_gain": -99.99997199096507
+    },
+    "BM25_vs_LM_MLE": {
+      "model_a": "BM25",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99583576928983
+      },
+      "mean_gain": -99.99958357692898
+    },
+    "BM25_vs_LSI_k100": {
+      "model_a": "BM25",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": -73.83498835756716,
+        "I2": -76.53692178708215,
+        "I3": -71.5734469043465,
+        "I4": -73.99224295109059,
+        "I5": -85.04391558121411,
+        "I6": -82.45995986831943,
+        "I7": -91.8638112833853,
+        "I8": -87.38267125645403,
+        "I9": -83.5632386702166,
+        "I10": -58.63287254193587
+      },
+      "mean_gain": -78.48840692016117
+    },
+    "BM25_vs_VSM_Cosine": {
+      "model_a": "BM25",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 28.23238077120319,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": -91.5916213541221,
+        "I2": -92.58035844590115,
+        "I3": -91.93412827491805,
+        "I4": -91.32040868349739,
+        "I5": -95.64076907432458,
+        "I6": -90.21122238946863,
+        "I7": -96.99380882547356,
+        "I8": -96.3179929796333,
+        "I9": -94.86351189063129,
+        "I10": -88.37298201334696
+      },
+      "mean_gain": -92.9826803931317
+    },
+    "ExtendedBIR_no_relevance_vs_ExtendedBIR_with_relevance": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "ExtendedBIR_with_relevance",
+      "mean_dcg_a": 34.77914194877376,
+      "mean_dcg_b": 2.719878834451326,
+      "gains_per_query": {
+        "I1": -92.60908714017894,
+        "I2": -97.01012428571063,
+        "I3": -99.56844843937135,
+        "I4": -88.33074385936402,
+        "I5": -96.01410399383077,
+        "I6": -93.54543425326618,
+        "I7": -81.38120508699193,
+        "I8": -99.68748763965507,
+        "I9": -94.73268155313359,
+        "I10": -92.4344941626808
+      },
+      "mean_gain": -93.53138104141833
+    },
+    "ExtendedBIR_no_relevance_vs_LM_Dirichlet": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_dcg_a": 34.77914194877376,
+      "mean_dcg_b": 1.0851148457490502e-05,
+      "gains_per_query": {
+        "I1": -99.99999999999962,
+        "I2": -100.0,
+        "I3": -99.99999999986962,
+        "I4": -99.99999999999723,
+        "I5": -100.0,
+        "I6": -99.99999999999997,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99922796318087
+      },
+      "mean_gain": -99.99992279630473
+    },
+    "ExtendedBIR_no_relevance_vs_LM_Laplace": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_Laplace",
+      "mean_dcg_a": 34.77914194877376,
+      "mean_dcg_b": 1.2759732824006936e-08,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -99.99999999999997,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99999909217114
+      },
+      "mean_gain": -99.99999990921711
+    },
+    "ExtendedBIR_no_relevance_vs_LM_JelinekMercer": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_dcg_a": 34.77914194877376,
+      "mean_dcg_b": 2.9481048197775055e-06,
+      "gains_per_query": {
+        "I1": -99.99999999999972,
+        "I2": -100.0,
+        "I3": -99.99999999997054,
+        "I4": -99.99999999999932,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99979024841855
+      },
+      "mean_gain": -99.99997902483881
+    },
+    "ExtendedBIR_no_relevance_vs_LM_MLE": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 34.77914194877376,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99688152739738
+      },
+      "mean_gain": -99.99968815273974
+    },
+    "ExtendedBIR_no_relevance_vs_LSI_k100": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 34.77914194877376,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": -80.09079810967259,
+        "I2": -80.22015441284299,
+        "I3": -73.88615039261175,
+        "I4": -76.39882869390647,
+        "I5": -86.99991304309812,
+        "I6": -87.97116012133782,
+        "I7": -94.06433750573419,
+        "I8": -88.05660484447478,
+        "I9": -85.58119079197863,
+        "I10": -69.02134809389287
+      },
+      "mean_gain": -82.22904860095502
+    },
+    "ExtendedBIR_no_relevance_vs_VSM_Cosine": {
+      "model_a": "ExtendedBIR_no_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 34.77914194877376,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": -93.60198610576519,
+        "I2": -93.74509333684406,
+        "I3": -92.59034465161795,
+        "I4": -92.12356063068306,
+        "I5": -96.21088116968541,
+        "I6": -93.286923085641,
+        "I7": -97.80686795418214,
+        "I8": -96.51466124855057,
+        "I9": -95.49412195247629,
+        "I10": -91.29286065899277
+      },
+      "mean_gain": -94.26673007944385
+    },
+    "ExtendedBIR_with_relevance_vs_LM_Dirichlet": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_Dirichlet",
+      "mean_dcg_a": 2.719878834451326,
+      "mean_dcg_b": 1.0851148457490502e-05,
+      "gains_per_query": {
+        "I1": -99.9999999999948,
+        "I2": -100.0,
+        "I3": -99.99999996978396,
+        "I4": -99.99999999997623,
+        "I5": -100.0,
+        "I6": -99.99999999999957,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.98979530469292
+      },
+      "mean_gain": -99.99897952744475
+    },
+    "ExtendedBIR_with_relevance_vs_LM_Laplace": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_Laplace",
+      "mean_dcg_a": 2.719878834451326,
+      "mean_dcg_b": 1.2759732824006936e-08,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -99.99999999999734,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99998800042101
+      },
+      "mean_gain": -99.99999880004182
+    },
+    "ExtendedBIR_with_relevance_vs_LM_JelinekMercer": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_JelinekMercer",
+      "mean_dcg_a": 2.719878834451326,
+      "mean_dcg_b": 2.9481048197775055e-06,
+      "gains_per_query": {
+        "I1": -99.9999999999963,
+        "I2": -100.0,
+        "I3": -99.999999993171,
+        "I4": -99.99999999999407,
+        "I5": -100.0,
+        "I6": -99.99999999999996,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.99722752733307
+      },
+      "mean_gain": -99.99972275204945
+    },
+    "ExtendedBIR_with_relevance_vs_LM_MLE": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 2.719878834451326,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": -99.95878038204341
+      },
+      "mean_gain": -99.99587803820434
+    },
+    "ExtendedBIR_with_relevance_vs_LSI_k100": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 2.719878834451326,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": 169.37405795377592,
+        "I2": 561.5607964111742,
+        "I3": 5951.15401954454,
+        "I4": 102.25086347969426,
+        "I5": 226.1521860274541,
+        "I6": 86.36172208407787,
+        "I7": -68.12005007843531,
+        "I8": 3721.735288275614,
+        "I9": 173.74098136404302,
+        "I10": 309.4723151662286
+      },
+      "mean_gain": 1123.3682180228166
+    },
+    "ExtendedBIR_with_relevance_vs_VSM_Cosine": {
+      "model_a": "ExtendedBIR_with_relevance",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 2.719878834451326,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": -13.43405049441043,
+        "I2": 109.20289874465887,
+        "I3": 1616.9803157676242,
+        "I4": -32.50264391841814,
+        "I5": -4.936836674866997,
+        "I6": 4.0050900055667675,
+        "I7": -88.22087006132915,
+        "I8": 1015.2642882996844,
+        "I9": -14.455940095964467,
+        "I10": 15.089982457703858
+      },
+      "mean_gain": 260.6992234030249
+    },
+    "LM_Dirichlet_vs_LM_Laplace": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_Laplace",
+      "mean_dcg_a": 1.0851148457490502e-05,
+      "mean_dcg_b": 1.2759732824006936e-08,
+      "gains_per_query": {
+        "I1": -99.99979546654714,
+        "I2": -99.99999999986912,
+        "I3": -99.99119965598894,
+        "I4": -99.99995543896276,
+        "I5": -99.99999999999977,
+        "I6": -99.99999999994142,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": -99.9999998401577,
+        "I10": -99.88241119769819
+      },
+      "mean_gain": -59.9873361599165
+    },
+    "LM_Dirichlet_vs_LM_JelinekMercer": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_JelinekMercer",
+      "mean_dcg_a": 1.0851148457490502e-05,
+      "mean_dcg_b": 2.9481048197775055e-06,
+      "gains_per_query": {
+        "I1": -28.497606994372422,
+        "I2": -62.496638445197306,
+        "I3": -77.39945442442581,
+        "I4": -75.04880406999365,
+        "I5": -87.14857337066198,
+        "I6": -89.80778009675524,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": -52.197385518551584,
+        "I10": -72.83140178600549
+      },
+      "mean_gain": -54.54276447059635
+    },
+    "LM_Dirichlet_vs_LM_MLE": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 1.0851148457490502e-05,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 303.9279637087438
+      },
+      "mean_gain": -39.60720362912562
+    },
+    "LM_Dirichlet_vs_LSI_k100": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 1.0851148457490502e-05,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": 5192556496886876.0,
+        "I2": 2.0037919165823417e+33,
+        "I3": 20026299140415.53,
+        "I4": 850634661418173.0,
+        "I5": 1.2428488769205896e+30,
+        "I6": 4.271578762167117e+16,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 1.6386238888301224e+32,
+        "I10": 4012487.371246438
+      },
+      "mean_gain": 2.1688971543422747e+32
+    },
+    "LM_Dirichlet_vs_VSM_Cosine": {
+      "model_a": "LM_Dirichlet",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 1.0851148457490502e-05,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": 1668678071410815.5,
+        "I2": 6.3365163066524924e+32,
+        "I3": 5682347748921.158,
+        "I4": 283883043311848.4,
+        "I5": 3.62251583269213e+29,
+        "I6": 2.3838904720177748e+16,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 5.120699845809793e+31,
+        "I10": 1127714.001245192
+      },
+      "mean_gain": 6.852208807066165e+31
+    },
+    "LM_Laplace_vs_LM_JelinekMercer": {
+      "model_a": "LM_Laplace",
+      "model_b": "LM_JelinekMercer",
+      "mean_dcg_a": 1.2759732824006936e-08,
+      "mean_dcg_b": 2.9481048197775055e-06,
+      "gains_per_query": {
+        "I1": 34958676.67425316,
+        "I2": 28655936858437.535,
+        "I3": 256714.34211163738,
+        "I4": 55993201.48744844,
+        "I5": 5242516726553955.0,
+        "I6": 17399779047902.285,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": 29906112037.288177,
+        "I10": 23004.7495017976
+      },
+      "mean_gain": 528860243980372.9
+    },
+    "LM_Laplace_vs_LM_MLE": {
+      "model_a": "LM_Laplace",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 1.2759732824006936e-08,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": -100.0,
+        "I8": -100.0,
+        "I9": -100.0,
+        "I10": 343408.8680230281
+      },
+      "mean_gain": 34250.886802302804
+    },
+    "LM_Laplace_vs_LSI_k100": {
+      "model_a": "LM_Laplace",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 1.2759732824006936e-08,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": 2.5387321362632876e+21,
+        "I2": 1.531077009065557e+45,
+        "I3": 2.2756268522387984e+17,
+        "I4": 1.90892024518902e+21,
+        "I5": 5.069986557726419e+44,
+        "I6": 7.29228051920126e+28,
+        "I7": 1.1592652317057949e+92,
+        "I8": 4.420149409673403e+56,
+        "I9": 1.0251504086499504e+41,
+        "I10": 3412388913.8347573
+      },
+      "mean_gain": 1.1592652317057949e+91
+    },
+    "LM_Laplace_vs_VSM_Cosine": {
+      "model_a": "LM_Laplace",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 1.2759732824006936e-08,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": 8.158460379792662e+20,
+        "I2": 4.8416676174798584e+44,
+        "I3": 6.456960934569535e+16,
+        "I4": 6.370656090365713e+20,
+        "I5": 1.477742541185376e+44,
+        "I6": 4.069689221927222e+28,
+        "I7": 4.283299011209906e+91,
+        "I8": 1.289894357853852e+56,
+        "I9": 3.2035951479100316e+40,
+        "I10": 959116736.9506763
+      },
+      "mean_gain": 4.283299011209906e+90
+    },
+    "LM_JelinekMercer_vs_LM_MLE": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "LM_MLE",
+      "mean_dcg_a": 2.9481048197775055e-06,
+      "mean_dcg_b": 4.383081306158244e-05,
+      "gains_per_query": {
+        "I1": -100.0,
+        "I2": -100.0,
+        "I3": -100.0,
+        "I4": -100.0,
+        "I5": -100.0,
+        "I6": -100.0,
+        "I7": 0.0,
+        "I8": 0.0,
+        "I9": -100.0,
+        "I10": 1386.745692682374
+      },
+      "mean_gain": 68.6745692682374
+    },
+    "LM_JelinekMercer_vs_LSI_k100": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 2.9481048197775055e-06,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": 7262073727348152.0,
+        "I2": 5.34296615959146e+33,
+        "I3": 88609804013477.36,
+        "I4": 3409193947273980.5,
+        "I5": 9.670902015526727e+30,
+        "I6": 4.19101903482993e+17,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 3.427895956331116e+32,
+        "I10": 14769110.172866259
+      },
+      "mean_gain": 5.6954266572400995e+32
+    },
+    "LM_JelinekMercer_vs_VSM_Cosine": {
+      "model_a": "LM_JelinekMercer",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 2.9481048197775055e-06,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": 2333737377544149.0,
+        "I2": 1.6895862247956374e+33,
+        "I3": 25142524679314.906,
+        "I4": 1137753252823145.2,
+        "I5": 2.818765524772502e+30,
+        "I6": 2.3389315523489206e+17,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 1.0712175267729491e+32,
+        "I10": 4151067.4336744267
+      },
+      "mean_gain": 1.799526742997705e+32
+    },
+    "LM_MLE_vs_LSI_k100": {
+      "model_a": "LM_MLE",
+      "model_b": "LSI_k100",
+      "mean_dcg_a": 4.383081306158244e-05,
+      "mean_dcg_b": 4.968895666397628,
+      "gains_per_query": {
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
+        "I10": 993291.8252165759
+      },
+      "mean_gain": 99419.18252165758
+    },
+    "LM_MLE_vs_VSM_Cosine": {
+      "model_a": "LM_MLE",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 4.383081306158244e-05,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": 100.0,
+        "I2": 100.0,
+        "I3": 100.0,
+        "I4": 100.0,
+        "I5": 100.0,
+        "I6": 100.0,
+        "I7": 100.0,
+        "I8": 100.0,
+        "I9": 100.0,
+        "I10": 279111.66707299656
+      },
+      "mean_gain": 28001.166707299657
+    },
+    "LSI_k100_vs_VSM_Cosine": {
+      "model_a": "LSI_k100",
+      "model_b": "VSM_Cosine",
+      "mean_dcg_a": 4.968895666397628,
+      "mean_dcg_b": 1.6898256151817943,
+      "gains_per_query": {
+        "I1": -67.86403629096156,
+        "I2": -68.37737364735943,
+        "I3": -71.62557240780895,
+        "I4": -66.62691326983703,
+        "I5": -70.85312703771638,
+        "I6": -44.19181748135787,
+        "I7": -63.05160463660876,
+        "I8": -70.81785617855031,
+        "I9": -68.74999882086634,
+        "I10": -71.89309797147529
+      },
+      "mean_gain": -66.4051397742542
+    }
+  }
+}

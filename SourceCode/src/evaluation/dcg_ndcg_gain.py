@@ -1,34 +1,47 @@
-"""DCG/nDCG and gain metrics."""
-
 import numpy as np
 import math
 import json
 from collections import defaultdict
 import os
+import math
+import random
+
 
 
 def dcg_at_k(relevance_scores, k=20):
     """
     Calcule le DCG@k (Discounted Cumulative Gain).
-    
-    :param relevance_scores: Liste des scores de pertinence (ex: [3, 2, 0, 1, ...])
-    :param k: Nombre de résultats à considérer (cutoff)
-    :return: Valeur du DCG@k
+
+    :param relevance_scores: Liste des scores de pertinence
+    :param k: cutoff
+    :param shuffle: si True, mélange aléatoirement les scores
+    :return: DCG@k
     """
-    relevance_scores = relevance_scores[:k]  # On prend les k premiers résultats
-    # print(relevance_scores)
-    if not relevance_scores:
+    scores = relevance_scores.copy()
+    scores = scores[:k]
+    # print("avant : ",scores)
+    # Si ideal est False, trier les scores par ordre croissant
+    # if ideal == False:
+    #     scores = sorted(scores)
+
+    # if shuffle:
+    #     random.shuffle(scores)
+    # print("apres : ",scores)
+
+
+    if not scores:
         return 0.0
-    
+
     # Premier élément sans discount
-    dcg = relevance_scores[0]
-    
-    # Somme des éléments suivants avec discount log2
-    for i, rel in enumerate(relevance_scores[1:], start=2):  
+    dcg = scores[0]
+
+    # Discount logarithmique
+    for i, rel in enumerate(scores[1:], start=2):
         if rel > 0:
             dcg += rel / math.log2(i)
-    
+
     return dcg
+
 
 def ndcg_at_k(relevance_scores, k=20):
     """
@@ -64,7 +77,7 @@ def calculate_gain_percentage(score1, score2):
     for score1_val, score2_val in zip(score1, score2):
         if score1_val == 0:
             if score2_val > 0:
-                gains.append(float('inf'))  # Gain infini (de 0 à >0)
+                gains.append(100.0)  # Gain infini (de 0 à >0)
             else:
                 gains.append(0.0)
         else:
@@ -72,7 +85,6 @@ def calculate_gain_percentage(score1, score2):
             gains.append(gain)
     
     return gains
-
 
 def extract_scores_from_model_results(model_results, top_k=20):
     """
@@ -184,7 +196,8 @@ def create_comparison_report(all_metrics, output_dir="metrics"):
         "model_comparison": {},
         "ranking_by_ndcg": [],
         "ranking_by_dcg": [],
-        "gains_comparison": {}
+        "gains_comparison_ndcg": {},
+        "gains_comparison_dcg": {}
     }
     
     model_names = list(all_metrics.keys())
@@ -245,11 +258,42 @@ def create_comparison_report(all_metrics, output_dir="metrics"):
             # Calculer les gains
             gains = calculate_gain_percentage(ndcg_a, ndcg_b)
             
-            comparison["gains_comparison"][key] = {
+            comparison["gains_comparison_ndcg"][key] = {
                 "model_a": model_a,
                 "model_b": model_b,
                 "mean_ndcg_a": sum(ndcg_a) / len(ndcg_a) if ndcg_a else 0,
                 "mean_ndcg_b": sum(ndcg_b) / len(ndcg_b) if ndcg_b else 0,
+                "gains_per_query": {
+                    f"I{q}": (float('inf') if gains[q-1] == float('inf') else float(gains[q-1])) 
+                    for q in range(1, len(gains)+1)
+                },
+                "mean_gain": sum(g for g in gains if isinstance(g, (int, float)) and not math.isinf(g)) / len(gains) if gains else 0
+            }
+
+    # Calcul des gains (%) pour les 10 premières requêtes (DCG)
+    for i, model_a in enumerate(model_names):
+        for model_b in model_names[i+1:]:
+            key = f"{model_a}_vs_{model_b}"
+            
+            # Récupérer les DCG@20 pour les requêtes 1 à 10
+            dcg_a = []
+            dcg_b = []
+            
+            for q in range(1, 11):
+                query_id = str(q)
+                if query_id in all_metrics[model_a]["query_metrics"]:
+                    dcg_a.append(all_metrics[model_a]["query_metrics"][query_id]["dcg@20"])
+                if query_id in all_metrics[model_b]["query_metrics"]:
+                    dcg_b.append(all_metrics[model_b]["query_metrics"][query_id]["dcg@20"])
+            
+            # Calculer les gains
+            gains = calculate_gain_percentage(dcg_a, dcg_b)
+            
+            comparison["gains_comparison_dcg"][key] = {
+                "model_a": model_a,
+                "model_b": model_b,
+                "mean_dcg_a": sum(dcg_a) / len(dcg_a) if dcg_a else 0,
+                "mean_dcg_b": sum(dcg_b) / len(dcg_b) if dcg_b else 0,
                 "gains_per_query": {
                     f"I{q}": (float('inf') if gains[q-1] == float('inf') else float(gains[q-1])) 
                     for q in range(1, len(gains)+1)
@@ -273,17 +317,17 @@ def create_comparison_report(all_metrics, output_dir="metrics"):
 if __name__ == "__main__":
     # 1. Liste de tous tes fichiers JSON de résultats
     MODEL_JSON_PATHS = [
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\BM25.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_no_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\ExtendedBIR_with_relevance.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Dirichlet.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_Laplace.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_JelinekMercer.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LM_MLE.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\LSI_k100.json",
-        r"C:\Users\dsuhs\Desktop\SII\RI\Projet\Information-Retrival-Project\SourceCode\Results\VSM_Cosine.json",        
+        r"SourceCode\Results\BIR_no_relevance.json",
+        r"SourceCode\Results\BIR_with_relevance.json",
+        r"SourceCode\Results\BM25.json",
+        r"SourceCode\Results\ExtendedBIR_no_relevance.json",
+        r"SourceCode\Results\ExtendedBIR_with_relevance.json",
+        r"SourceCode\Results\LM_Dirichlet.json",
+        r"SourceCode\Results\LM_Laplace.json",
+        r"SourceCode\Results\LM_JelinekMercer.json",
+        r"SourceCode\Results\LM_MLE.json",
+        r"SourceCode\Results\LSI_k100.json",
+        r"SourceCode\Results\VSM_Cosine.json",        
     ]
     
     # 2. Évaluer tous les modèles
@@ -291,7 +335,7 @@ if __name__ == "__main__":
     print(f"Nombre de modèles à évaluer: {len(MODEL_JSON_PATHS)}")
     
     # Créer le dossier pour les résultats
-    OUTPUT_DIR = "evaluation_results"
+    OUTPUT_DIR = "evaluation_results_dcg_ndcg_gain"
     
     # Évaluer tous les modèles
     all_metrics = evaluate_all_models(

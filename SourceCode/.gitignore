@@ -5,3 +5,4 @@ __pycache__/
 outputs/
 data/raw/
 report/report.pdf
+scripts/verify_calculations.py

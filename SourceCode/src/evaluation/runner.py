@@ -2,7 +2,7 @@
 Run all IR metrics on query results.
 
 This script computes:
-- Basic metrics: precision, recall, F1, precision@k, R-precision, average precision, reciprocal rank
+- Basic metrics: precision, recall, F1, precision@k, R-precision
 - Advanced metrics: MAP, interpolated MAP, PR curves
 - Gain metrics: DCG, nDCG, CG, CG@k, DCG@k, nDCG@k
 - Optional: gain comparison between two systems
@@ -11,10 +11,8 @@ This script computes:
 import math
 from basic_metrics import (
     precision, recall, f1_score, precision_at_k, r_precision,
-    reciprocal_rank, average_precision, get_precision_recall_points,
-    interpolate_precision
 )
-from advanced_metrics import (
+from evaluation_Avancée import (
     map_score, interpolated_map, get_pr_curve_data, get_interpolated_pr_curve
 )
 from dcg_ndcg_gain import (
@@ -77,9 +75,7 @@ def _compute_all_metrics(runs, qrels, k_values, relevance_scores):
             'precision': precision(ranked_docs, relevant_docs),
             'recall': recall(ranked_docs, relevant_docs),
             'f1': f1_score(ranked_docs, relevant_docs),
-            'r_precision': r_precision(ranked_docs, relevant_docs),
-            'reciprocal_rank': reciprocal_rank(ranked_docs, relevant_docs),
-            'average_precision': average_precision(ranked_docs, relevant_docs)
+            'r_precision': r_precision(ranked_docs, relevant_docs)
         }
 
         # precision@k

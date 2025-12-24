@@ -124,6 +124,66 @@ def mean_interpolated_pr_curve(all_rankings, all_rels):
 
     return recall_levels, avg_precisions / len(all_rankings)
 
+# =========================================================
+#(FOR run_all)
+# =========================================================
+
+def map_score(all_rankings, all_rels):
+    """
+    Mean Average Precision (MAP)
+    """
+    ap_scores = []
+    for qid in all_rankings:
+        ranked_docs = all_rankings[qid]
+        relevant_docs = all_rels.get(qid, set())
+        ap_scores.append(average_precision(ranked_docs, relevant_docs))
+    return float(np.mean(ap_scores)) if ap_scores else 0.0
+
+
+def interpolated_map(all_rankings, all_rels):
+    """
+    Interpolated MAP (11-point interpolation)
+    """
+    recall_levels = np.linspace(0, 1, 11)
+    interp_scores = []
+
+    for qid in all_rankings:
+        ranked_docs = all_rankings[qid]
+        relevant_docs = all_rels.get(qid, set())
+
+        recalls, precisions = precision_recall_curve(ranked_docs, relevant_docs)
+        _, interp_precisions = interpolated_pr_curve(recalls, precisions)
+        interp_scores.append(np.mean(interp_precisions))
+
+    return float(np.mean(interp_scores)) if interp_scores else 0.0
+
+
+def get_pr_curve_data(runs, qrels, query_id):
+    """
+    PR curve for ONE query (used in run_all)
+    """
+    ranked_docs = runs[query_id]
+    relevant_docs = qrels.get(query_id, set())
+    recalls, precisions = precision_recall_curve(ranked_docs, relevant_docs)
+    return recalls, precisions
+
+
+def get_interpolated_pr_curve(runs, qrels):
+    """
+    Interpolated PR curve (mean over queries)
+    """
+    recall_levels = np.linspace(0, 1, 11)
+    avg_precisions = np.zeros(11)
+
+    for qid in runs:
+        ranked_docs = runs[qid]
+        relevant_docs = qrels.get(qid, set())
+        recalls, precisions = precision_recall_curve(ranked_docs, relevant_docs)
+        _, interp = interpolated_pr_curve(recalls, precisions)
+        avg_precisions += np.array(interp)
+
+    avg_precisions /= len(runs)
+    return recall_levels.tolist(), avg_precisions.tolist()
 
 # =========================================================
 # EVALUATION
@@ -236,5 +296,6 @@ if __name__ == "__main__":
     # Sauvegarde JSON
     with open(r"C:\Users\X-LARGE\Desktop\M2 SII\TPs\RI\lab 6\evaluation_results.json", "w") as f:
         json.dump(final_results, f, indent=4)
+
 
     print("\n Résultats sauvegardés dans evaluation_results.json")

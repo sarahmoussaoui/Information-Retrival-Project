@@ -336,7 +336,7 @@ def main():
         print("\n" + summary_df.to_string())
         
         # Save per-model JSON files and one summary JSON (simple format)
-        output_dir = project_root / "evaluation_results" / "basic_metrics"
+        output_dir = project_root / "evaluation_results" / "evaluation_results_PR_R_F1_P@K_RP"
         output_dir.mkdir(parents=True, exist_ok=True)
 
         # Write per-model JSON files

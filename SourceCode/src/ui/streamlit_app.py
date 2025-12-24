@@ -621,7 +621,7 @@ def display_all_models_comparison(query_id):
     # Load standard comparison data
     comparison_path = Path("evaluation_results/evaluation_results_dcg_ndcg_gain/all_models_comparison.json")
     avancee_path = Path("evaluation_results/evaluation_results_PRCurve_MAP_P@K_RR/evaluation_Avancée_results.json")
-    basic_metrics_path = Path("evaluation_results/basic_metrics/comparison_report.json")
+    basic_metrics_path = Path("evaluation_results/evaluation_results_PR_R_F1_P@K_RP/comparison_report.json")
     
     if not comparison_path.exists():
         st.warning("Comparison data not available.")
